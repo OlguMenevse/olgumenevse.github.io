@@ -39,26 +39,25 @@ document.addEventListener('DOMContentLoaded', function() {
         lastScroll = currentScroll;
     });
 
-    // Parallax effect for hero image
-    const heroImage = document.querySelector('.hero-image');
-    const aboutImage = document.querySelector('.about-image');
+    // Simple smooth parallax effect
+    const heroImage = document.querySelector('.hero-image img');
+    const aboutImage = document.querySelector('.about-image img');
     
     window.addEventListener('scroll', function() {
         const scrolled = window.pageYOffset;
         
-        // Hero parallax
+        // Hero parallax - very subtle
         if (heroImage) {
-            const heroOffset = scrolled * 0.3;
-            heroImage.style.transform = `translateY(${heroOffset}px)`;
+            heroImage.style.transform = `translateY(${scrolled * 0.15}px)`;
         }
         
-        // About image parallax
+        // About parallax - very subtle
         if (aboutImage) {
-            const aboutSection = aboutImage.getBoundingClientRect();
-            if (aboutSection.top < window.innerHeight && aboutSection.bottom > 0) {
-                const aboutOffset = (window.innerHeight - aboutSection.top) * 0.1;
-                aboutImage.querySelector('img').style.transform = `translateY(-${aboutOffset}px) scale(1.08)`;
-            }
+            const aboutSection = document.querySelector('.about-image');
+            const aboutTop = aboutSection.getBoundingClientRect().top + window.pageYOffset;
+            const offset = (scrolled - aboutTop) * 0.15;
+            
+            aboutImage.style.transform = `translateY(${offset}px)`;
         }
     });
 
