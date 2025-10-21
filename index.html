@@ -4,90 +4,186 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uzm. Psk. Olgu Menevşe - Spor Psikoloğu</title>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Text:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <script src="code.js"></script>
-    <nav>
-        <ul>
-            <li><a href="#anasayfa">Anasayfa</a></li>
-            <li><a href="#hakkimda">Hakkımda</a></li>
-            <li><a href="#yazilar">Yazılarım</a></li>
-            <li><a href="#sertifikalar">Sertifikalar</a></li>
-            <li><a href="#iletisim">İletişim</a></li>
-        </ul>
-    </nav>
+    
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-name">Olgu Menevşe</span>
+                <span class="logo-title">Uzman Psikolog</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#anasayfa">Anasayfa</a></li>
+                    <li><a href="#hakkimda">Hakkımda</a></li>
+                    <li><a href="#yazilar">Yazılarım</a></li>
+                    <li><a href="#sertifikalar">Sertifikalar</a></li>
+                    <li><a href="#iletisim">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
     <!-- Hero Section -->
     <section id="anasayfa" class="hero">
         <div class="hero-content">
             <div class="hero-text">
-                <h1>Uzm. Psk.<br>Olgu Menevşe</h1>
-                <p class="hero-quote">"Kendini anlamak, sınırlarını değil, gücünü gösterir."</p>
-                <p style="font-size: 1.2rem; color: #A64D79; font-weight: 400;">
-                    Spor Psikoloğu | Bireysel ve Takım Danışmanlığı
-                </p>
+                <span class="hero-label">SPOR PSİKOLOJİSİ</span>
+                <h1>Zihinsel Dayanıklılık,<br>Sürdürülebilir Başarı</h1>
+                <blockquote class="hero-quote">
+                    "Kendini anlamak, sınırlarını değil, gücünü gösterir."
+                </blockquote>
+                <div class="hero-services">
+                    <span>Bireysel Danışmanlık</span>
+                    <span class="separator">·</span>
+                    <span>Takım Danışmanlığı</span>
+                    <span class="separator">·</span>
+                    <span>Performans Koçluğu</span>
+                </div>
             </div>
             <div class="hero-image">
-                <img src="assets/hero-image-1.jpg" alt="Uzm. Psk. Olgu Menevşe">
+                <div class="image-frame">
+                    <img src="assets/hero-image-1.jpg" alt="Uzm. Psk. Olgu Menevşe">
+                </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="hakkimda">
-        <h2>Hakkımda</h2>
+    <section id="hakkimda" class="about">
+        <div class="section-header">
+            <span class="section-label">HAKKIMDA</span>
+            <h2>Profesyonel Yolculuk</h2>
+        </div>
+        
         <div class="about-content">
-            <div class="about-image">
-                <img src="assets/hero-image-2.jpg" alt="Olgu Menevşe Profil">
-            </div>
-            <div class="about-text">
-                <p>Sporla tanışma yolculuğum 10 yaşında voleybol ve yüzme ile başladı. Erken yaşta başlayan bu tutku, yüzme ve su topunda profesyonelleşmemle birlikte sporun psikolojik yönüne olan ilgimi derinleştirdi.</p>
+            <aside class="about-sidebar">
+                <div class="profile-image">
+                    <img src="assets/hero-image-2.jpg" alt="Olgu Menevşe">
+                </div>
+                <div class="credentials">
+                    <h4>Eğitim</h4>
+                    <p class="credential-item">
+                        <strong>Ege Üniversitesi</strong><br>
+                        Psikoloji Bölümü<br>
+                        <em>Yüksek Onur Derecesi</em>
+                    </p>
+                    <p class="credential-item">
+                        <strong>Hacettepe Üniversitesi</strong><br>
+                        Spor ve Egzersiz Psikolojisi<br>
+                        <em>Yüksek Lisans</em>
+                    </p>
+                </div>
+            </aside>
+            
+            <article class="about-text">
+                <p class="lead">
+                    Sporla tanışma yolculuğum 10 yaşında voleybol ve yüzme ile başladı. Erken yaşta başlayan bu tutku, yüzme ve su topunda profesyonelleşmemle birlikte sporun psikolojik yönüne olan ilgimi derinleştirdi.
+                </p>
                 
-                <p><strong>Ege Üniversitesi Psikoloji Bölümü'nü yüksek onur derecesiyle</strong> tamamladım. Lisans dönemimde spor psikolojisine olan ilgim doğrultusunda, "Türkiye'deki Sporcu Bireylerin Müsabaka Anında Psikolojik Momentum Algılarının ve Fizyolojik Durumlarının İncelenmesi" başlıklı tez çalışmasında stajyer olarak yer aldım.</p>
+                <p>
+                    Ege Üniversitesi Psikoloji Bölümü'nü yüksek onur derecesiyle tamamladım. Lisans dönemimde spor psikolojisine olan ilgim doğrultusunda, "Türkiye'deki Sporcu Bireylerin Müsabaka Anında Psikolojik Momentum Algılarının ve Fizyolojik Durumlarının İncelenmesi" başlıklı tez çalışmasında stajyer olarak yer aldım.
+                </p>
                 
-                <p>Akademik yolculuğuma <strong>Hacettepe Üniversitesi Spor ve Egzersiz Psikolojisi Yüksek Lisans Programı</strong> ile devam ettim ve bu programı tamamlayarak uzman spor psikoloğu unvanını aldım. Eğitim sürecim boyunca farklı branşlardan sporcular ve takımlarla çalışma fırsatı buldum.</p>
+                <p>
+                    Akademik yolculuğuma Hacettepe Üniversitesi Spor ve Egzersiz Psikolojisi Yüksek Lisans Programı ile devam ettim ve bu programı tamamlayarak uzman spor psikoloğu unvanını aldım. Eğitim sürecim boyunca farklı branşlardan sporcular ve takımlarla çalışma fırsatı buldum.
+                </p>
                 
-                <p>2022 yılında Ziraat Bankası Erkek Voleybol Altyapı Takımı'nda gönüllü stajyer olarak görev aldım, aynı yıl Türkiye Halter Federasyonu Kadın Milli Takımı ile İslami Dayanışma Oyunları hazırlık sürecinde psikolog olarak yer aldım.</p>
+                <div class="experience-highlight">
+                    <h4>Deneyimler</h4>
+                    <ul class="experience-list">
+                        <li>2022 - Ziraat Bankası Erkek Voleybol Altyapı Takımı, Gönüllü Stajyer</li>
+                        <li>2022 - Türkiye Halter Federasyonu Kadın Milli Takımı, Psikolog</li>
+                        <li>İslami Dayanışma Oyunları Hazırlık Süreci, Takım Psikoloğu</li>
+                    </ul>
+                </div>
                 
-                <p>Şu anda bireysel ve takım düzeyinde danışmanlık hizmeti sunan bir spor psikoloğu olarak çalışmalarıma devam ediyorum. <strong>Amacım, sporcuların yalnızca performanslarını değil, aynı zamanda içsel denge, dayanıklılık ve iyi oluşlarını güçlendirmek; sporda sürdürülebilir başarıya zihinsel bir temel kazandırmak.</strong></p>
-            </div>
+                <p class="philosophy">
+                    <strong>Amacım,</strong> sporcuların yalnızca performanslarını değil, aynı zamanda içsel denge, dayanıklılık ve iyi oluşlarını güçlendirmek; sporda sürdürülebilir başarıya zihinsel bir temel kazandırmak.
+                </p>
+            </article>
         </div>
     </section>
 
     <!-- Blog Preview Section -->
-    <section class="blog-preview" id="yazilar">
-        <h2>Blog</h2>
-        <div class="blog-card" onclick="window.location.href='yazilar.html'">
-            <h3>Düşüncelerinizle Yenin: Sporcularda Yaralanma Psikolojisi</h3>
-            <p>Eğer yaralanma yaşamış bir sporcuysanız ve aklınızdan "artık yürüyemeyeceğim", "ben sakatım", "işim bitti, benden geçti" gibi cümleler geçiyorsa kendinizi yalnız hissetmeyin. Çünkü yapılan araştırmalarda yaralanma yaşamış sporcuların çoğunun aklından bu tarz cümleler geçtiği bulunmuş...</p>
-            <a href="yazilar.html" class="read-more">Devamını Oku →</a>
+    <section id="yazilar" class="blog-preview">
+        <div class="section-header">
+            <span class="section-label">YAZILARIM</span>
+            <h2>Güncel Makaleler</h2>
         </div>
+        
+        <article class="featured-article" onclick="window.location.href='yazilar.html'">
+            <div class="article-content">
+                <span class="article-category">YARALANMA PSİKOLOJİSİ</span>
+                <h3>Düşüncelerinizle Yenin: Sporcularda Yaralanma Psikolojisi</h3>
+                <p class="article-excerpt">
+                    Eğer yaralanma yaşamış bir sporcuysanız ve aklınızdan "artık yürüyemeyeceğim", "ben sakatım", "işim bitti, benden geçti" gibi cümleler geçiyorsa kendinizi yalnız hissetmeyin. Çünkü yapılan araştırmalarda yaralanma yaşamış sporcuların çoğunun aklından bu tarz cümleler geçtiği bulunmuş...
+                </p>
+                <a href="yazilar.html" class="read-more">Devamını Oku</a>
+            </div>
+        </article>
     </section>
 
     <!-- Certificates Section -->
-    <section id="sertifikalar">
-        <h2>Sertifikalar, Projeler ve Yayınlar</h2>
+    <section id="sertifikalar" class="certificates">
+        <div class="section-header">
+            <span class="section-label">UZMANLIK ALANLARI</span>
+            <h2>Sertifikalar, Projeler ve Yayınlar</h2>
+        </div>
+        
         <div class="certificates-grid">
             <div class="cert-category">
                 <h3>Sertifikalar ve Eğitimler</h3>
-                <ul>
-                    <li>Bilişsel Davranışçı Terapi Eğitimi - <em>Yüksek Psikoloji Akademisi</em></li>
-                    <li>Kabul-Kararlılık Terapisi Eğitimi - <em>Bağlamsal Bilimler ve Psikoterapiler Derneği</em></li>
-                    <li>Life Kinetik ve Zihinsel Antrenman - <em>Maksimum Performans</em></li>
-                    <li>Oyun Terapisi, Masal Terapisi ve Resim Analizi Eğitimi - <em>B&S Psikolojik Danışmanlık Merkezi</em></li>
-                    <li>Kıtalar Arası Yüzücü Sertifikası - <em>2023 Samsung Boğaziçi Kıtalararası Yüzme Yarışı</em></li>
-                    <li>Cinsel Terapi, Evlilik ve Çift Terapisi, Boşanma Terapisi Eğitimi - <em>Cinsel Terapi Eğitim Bilimleri Enstitüsü</em></li>
-                    <li>İnsan Kaynakları Uzmanlığı - <em>İk Üssü</em></li>
+                <ul class="cert-list">
+                    <li>
+                        <strong>Bilişsel Davranışçı Terapi Eğitimi</strong>
+                        <span class="cert-institution">Yüksek Psikoloji Akademisi</span>
+                    </li>
+                    <li>
+                        <strong>Kabul-Kararlılık Terapisi Eğitimi</strong>
+                        <span class="cert-institution">Bağlamsal Bilimler ve Psikoterapiler Derneği</span>
+                    </li>
+                    <li>
+                        <strong>Life Kinetik ve Zihinsel Antrenman</strong>
+                        <span class="cert-institution">Maksimum Performans</span>
+                    </li>
+                    <li>
+                        <strong>Oyun Terapisi, Masal Terapisi ve Resim Analizi</strong>
+                        <span class="cert-institution">B&S Psikolojik Danışmanlık Merkezi</span>
+                    </li>
+                    <li>
+                        <strong>Kıtalar Arası Yüzücü Sertifikası</strong>
+                        <span class="cert-institution">2023 Samsung Boğaziçi Kıtalararası Yüzme Yarışı</span>
+                    </li>
+                    <li>
+                        <strong>Cinsel Terapi, Evlilik ve Çift Terapisi</strong>
+                        <span class="cert-institution">Cinsel Terapi Eğitim Bilimleri Enstitüsü</span>
+                    </li>
                 </ul>
             </div>
+            
             <div class="cert-category">
                 <h3>Projeler ve Yayınlar</h3>
-                <ul>
-                    <li><strong>TÜBİTAK 1001 Projesi:</strong> "Ön Çapraz Bağ (ÖÇB) Operasyonu Sonrası Fiziksel Rehabilitasyonu Desteklemede Bilişsel Davranışçı Terapi ve Sanal Gerçeklik Kullanımının Etkisi" - <em>Psikolog olarak proje ekibinde yer aldım</em></li>
-                    <li><strong>Kongre Bildiri Sunumu:</strong> "Antrenör-Sporcu İlişkisi ile Kolektif Yeterlik Arasındaki İlişkide Takım Referanslı Yüklemelerin Uyumunun Aracı Etkisinin İncelenmesi" - <em>8. Uluslararası Egzersiz ve Spor Psikolojisi Kongresi (2025)</em></li>
-                    <li><strong>Sunum:</strong> "Sakatlanma Psikolojisi" - <em>6. İzmir Nuri Bilgin Psikoloji Günleri</em></li>
+                <ul class="cert-list">
+                    <li>
+                        <strong>TÜBİTAK 1001 Projesi</strong>
+                        <span class="cert-description">Ön Çapraz Bağ (ÖÇB) Operasyonu Sonrası Fiziksel Rehabilitasyonu Desteklemede Bilişsel Davranışçı Terapi ve Sanal Gerçeklik Kullanımının Etkisi</span>
+                        <span class="cert-institution">Proje Ekibi - Psikolog</span>
+                    </li>
+                    <li>
+                        <strong>Kongre Bildiri Sunumu</strong>
+                        <span class="cert-description">Antrenör-Sporcu İlişkisi ile Kolektif Yeterlik Arasındaki İlişkide Takım Referanslı Yüklemelerin Uyumunun Aracı Etkisinin İncelenmesi</span>
+                        <span class="cert-institution">8. Uluslararası Egzersiz ve Spor Psikolojisi Kongresi (2025)</span>
+                    </li>
+                    <li>
+                        <strong>Akademik Sunum</strong>
+                        <span class="cert-description">Sakatlanma Psikolojisi</span>
+                        <span class="cert-institution">6. İzmir Nuri Bilgin Psikoloji Günleri</span>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -95,8 +191,18 @@
 
     <!-- Footer -->
     <footer id="iletisim">
-        <p>&copy; 2025 Uzm. Psk. Olgu Menevşe | Spor Psikoloğu</p>
-        <p style="margin-top: 1rem; font-size: 0.9rem;">Bireysel ve Takım Danışmanlığı</p>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h4>Uzm. Psk. Olgu Menevşe</h4>
+                <p>Spor Psikolojisi Uzmanı</p>
+            </div>
+            <div class="footer-services">
+                <p>Bireysel ve Takım Danışmanlığı · Performans Koçluğu</p>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2025 Tüm hakları saklıdır.</p>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
