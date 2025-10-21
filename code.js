@@ -23,44 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Navbar scroll effect
-    const nav = document.querySelector('nav');
-    let lastScroll = 0;
-
-    window.addEventListener('scroll', function() {
-        const currentScroll = window.pageYOffset;
-        
-        if (currentScroll > 100) {
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
-        }
-        
-        lastScroll = currentScroll;
-    });
-
-    // Simple smooth parallax effect
-    const heroImage = document.querySelector('.hero-image img');
-    const aboutImage = document.querySelector('.about-image img');
-    
-    window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        
-        // Hero parallax - very subtle
-        if (heroImage) {
-            heroImage.style.transform = `translateY(${scrolled * 0.15}px)`;
-        }
-        
-        // About parallax - very subtle
-        if (aboutImage) {
-            const aboutSection = document.querySelector('.about-image');
-            const aboutTop = aboutSection.getBoundingClientRect().top + window.pageYOffset;
-            const offset = (scrolled - aboutTop) * 0.15;
-            
-            aboutImage.style.transform = `translateY(${offset}px)`;
-        }
-    });
-
     // Intersection Observer for scroll animations
     const observerOptions = {
         threshold: 0.1,
@@ -78,26 +40,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Observe all animated elements
     const animatedElements = document.querySelectorAll('h2, .about-image, .about-text, .blog-card, .cert-category');
     animatedElements.forEach(el => observer.observe(el));
-
-    // Parallax effect for mouse movement on hero
-    const hero = document.querySelector('.hero');
-    const heroContent = document.querySelector('.hero-content');
-    
-    if (hero && heroContent) {
-        hero.addEventListener('mousemove', function(e) {
-            const mouseX = e.clientX / window.innerWidth;
-            const mouseY = e.clientY / window.innerHeight;
-            
-            const moveX = (mouseX - 0.5) * 20;
-            const moveY = (mouseY - 0.5) * 20;
-            
-            heroContent.style.transform = `translate(${moveX}px, ${moveY}px)`;
-        });
-        
-        hero.addEventListener('mouseleave', function() {
-            heroContent.style.transform = 'translate(0, 0)';
-        });
-    }
 
     // Blog card click animation
     const blogCard = document.querySelector('.blog-card');
