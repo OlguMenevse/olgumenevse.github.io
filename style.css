@@ -609,9 +609,9 @@ footer {
     
     .header-content {
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 0rem;
     }
-    
+
     nav ul {
         gap: 1.5rem;
         flex-wrap: wrap;
@@ -621,6 +621,12 @@ footer {
     nav a {
         font-size: 0.85rem;
     }
+
+
+    nav.navigation a,
+    nav.navigation button {
+        display: none;
+    }
     
     section {
         padding: 5rem 5%;
@@ -628,6 +634,7 @@ footer {
     
     .hero {
         padding: 6rem 5% 4rem;
+        padding-top: 155px;;
     }
     
     .hero-text h1 {
@@ -690,6 +697,10 @@ footer {
     body {
         font-size: 14px;
     }
+    .header-content {
+        flex-direction: column;
+        gap: 0rem;
+    }
     
     .logo-name {
         font-size: 1.5rem;
@@ -702,13 +713,18 @@ footer {
     nav a {
         font-size: 0.8rem;
     }
+
+    nav.navigation a,
+    nav.navigation button {
+        display: none;
+    }
     
     section {
         padding: 4rem 4%;
     }
     
     .hero {
-        padding: 5rem 4% 3rem;
+        padding: 10rem 4% 3rem;
         min-height: auto;
     }
     
