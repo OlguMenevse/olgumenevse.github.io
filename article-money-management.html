@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Yönetimi: Finansal Psikoloji - Olgu Menevşe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Text:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .article-detail {
+            padding-top: 150px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+
+        .article-detail-header {
+            margin-bottom: 4rem;
+        }
+
+        .article-detail-category {
+            font-size: 0.85rem;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-detail h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--color-text-primary);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .article-meta-detail {
+            display: flex;
+            gap: 2rem;
+            color: var(--color-text-tertiary);
+            font-size: 0.9rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--color-border-light);
+        }
+
+        .article-content {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.25rem;
+            color: var(--color-text-secondary);
+            line-height: 1.9;
+        }
+
+        .article-content p {
+            margin-bottom: 2rem;
+        }
+
+        .article-content strong {
+            color: var(--color-text-primary);
+            font-weight: 600;
+        }
+
+        .article-section {
+            margin: 0;
+            padding: 0;
+        }
+
+        .article-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--color-text-primary);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .article-section h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            color: var(--color-text-primary);
+            margin: 2.5rem 0 1rem;
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: var(--color-accent-subtle);
+            border-left: 3px solid var(--color-accent);
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            color: var(--color-text-primary);
+            font-weight: 500;
+        }
+
+        .chart-container {
+            margin: 3rem 0;
+            padding: 2.5rem;
+            background: var(--color-background-alt);
+            border-radius: 12px;
+        }
+
+        .chart-container h3 {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .bias-card {
+            background: var(--color-background-alt);
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .bias-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .bias-content h4 {
+            font-size: 1.2rem;
+            color: var(--color-text-primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .bias-content p {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .strategy-card {
+            background: var(--color-background-alt);
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+
+        .strategy-card .difficulty {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 12px;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .strategy-card h4 {
+            font-size: 1.2rem;
+            color: var(--color-text-primary);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .budget-step {
+            background: var(--color-background-alt);
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .budget-visual {
+            background: var(--color-background-light);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .budget-visual .value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--color-accent);
+            margin: 1rem 0;
+        }
+
+        @media screen and (max-width: 768px) {
+            .article-detail {
+                padding-top: 180px;
+            }
+
+            .article-detail h1 {
+                font-size: 2.5rem;
+            }
+
+            .article-content {
+                font-size: 1.15rem;
+            }
+
+            .bias-card {
+                flex-direction: column;
+            }
+
+            .budget-step {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-name">Olgu Menevşe</span>
+                <span class="logo-title">Spor Psikoloğu</span>
+            </div>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="index.html#anasayfa">Anasayfa</a></li>
+                    <li><a href="index.html#hakkimda">Hakkımda</a></li>
+                    <li><a href="index.html#sertifikalar">Sertifikalar</a></li>
+                    <li><a href="articles.html">Blog</a></li>
+                    <li><a href="index.html#iletisim">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <article class="article-detail">
+        <div class="article-detail-header">
+            <a href="articles.html" class="back-link">← Tüm Yazılara Dön</a>
+            <span class="article-detail-category">FİNANSAL PSİKOLOJİ</span>
+            <h1>Para Yönetimi: Finansal Psikoloji</h1>
+            <div class="article-meta-detail">
+                <span>📖 16 dakika okuma</span>
+                <span>📅 8 Ocak 2025</span>
+            </div>
+        </div>
+
+        <div class="article-content">
+            <p>
+                Para yönetimi yalnızca matematiksel hesaplamalardan ibaret değildir; psikolojik etkenler de önemli rol oynar. Harcama kararlarımız bazen bilinçdışı kalıplar ve duygusal durumlarımızdan etkilenebilir.
+            </p>
+
+            <section class="article-section">
+                <h2>🧠 Paranın Psikolojisi</h2>
+                <p>
+                    Richard Thaler'in <strong>'mental accounting'</strong> teorisi: İnsanlar parayı kaynağına göre farklı kategorilere böler. 'Hediye olarak aldığım para' ile 'çalışarak kazandığım para'yı farklı harcama eğiliminde kullanırız. Bu durum rasyonel görünmese de birçok kültürde gözlemlenmiştir.
+                </p>
+                <div class="highlight-box">
+                    <p>
+                        💡 <strong>Çalışma:</strong> İnsanlar maaştan $20'ı harcamakta tereddüt ederken, ikramiye $20'sını kolayca harcar
+                    </p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>⏰ Şimdi Önyargısı (Present Bias)</h2>
+                <p>
+                    Beyin, uzak gelecekteki büyük kazançtan çok, şimdiki küçük zevki tercih eder. Bu yüzden emeklilik için tasarruf zordur ama bugün kahve almak kolaydır. Bu eğilimin, kısa vadeli ödüllere öncelik veren evrimsel bir eğilimle ilişkili olabileceği düşünülüyor.
+                </p>
+                <div class="highlight-box">
+                    <p>
+                        🧠 <strong>Davranışsal ekonomi:</strong> Gelecek için plan yapmak prefrontal korteks gerektirir - yorucu bir süreç
+                    </p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Harcama Tetikleyicileri</h2>
+                <p>
+                    İnsanların neden harcama yaptığına dair psikolojik faktörler:
+                </p>
+
+                <div class="chart-container">
+                    <h3>Harcama Motivasyonları</h3>
+                    <canvas id="spendingChart"></canvas>
+                    <p style="margin-top: 1.5rem; font-size: 1rem; color: #f59e0b;">
+                        💡 <strong>Not:</strong> Duygusal harcamalar genellikle kısa vadeli tatmin sağlar ama uzun vadede pişmanlık yaratabilir.
+                    </p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Para Yönetiminde Bilişsel Önyargılar</h2>
+                <p>
+                    Beynimizin bizi yönlendirdiği finansal kararlar:
+                </p>
+
+                <div class="bias-card">
+                    <div class="bias-icon" style="background: rgba(239, 68, 68, 0.1); color: rgb(239, 68, 68);">
+                        ⬇️
+                    </div>
+                    <div class="bias-content">
+                        <h4>Sunk Cost Fallacy (Batık Maliyet)</h4>
+                        <p><strong>Açıklama:</strong> Zaten harcanan paradan vazgeçememe</p>
+                        <p><strong>Örnek:</strong> Kullanmadığı spor salonu üyeliğini iptal etmemek</p>
+                        <p style="color: #10b981; font-weight: 600;">✓ Çözüm: Geçmiş harcamalar geri gelmez, gelecek odaklı düşünün</p>
+                    </div>
+                </div>
+
+                <div class="bias-card">
+                    <div class="bias-icon" style="background: rgba(249, 115, 22, 0.1); color: rgb(249, 115, 22);">
+                        🛒
+                    </div>
+                    <div class="bias-content">
+                        <h4>Anchoring (Çıpa Etkisi)</h4>
+                        <p><strong>Açıklama:</strong> İlk gördüğünüz fiyat referans olur</p>
+                        <p><strong>Örnek:</strong> ₺1000'den ₺600'e düşen ürünü ucuz sanmak</p>
+                        <p style="color: #10b981; font-weight: 600;">✓ Çözüm: Gerçek değeri ve ihtiyacınızı sorgulayın</p>
+                    </div>
+                </div>
+
+                <div class="bias-card">
+                    <div class="bias-icon" style="background: rgba(59, 130, 246, 0.1); color: rgb(59, 130, 246);">
+                        ⏱️
+                    </div>
+                    <div class="bias-content">
+                        <h4>Hyperbolic Discounting</h4>
+                        <p><strong>Açıklama:</strong> Yakın gelecek uzak gelecekten değerlidir</p>
+                        <p><strong>Örnek:</strong> Emeklilik için biriktirmek yerine tatil yapmak</p>
+                        <p style="color: #10b981; font-weight: 600;">✓ Çözüm: Gelecekteki benliğinizi somutlaştırın</p>
+                    </div>
+                </div>
+
+                <div class="bias-card">
+                    <div class="bias-icon" style="background: rgba(236, 72, 153, 0.1); color: rgb(236, 72, 153);">
+                        👥
+                    </div>
+                    <div class="bias-content">
+                        <h4>Sosyal Karşılaştırma</h4>
+                        <p><strong>Açıklama:</strong> Çevrenizin harcama seviyesine adapte olma</p>
+                        <p><strong>Örnek:</strong> Arkadaşlar pahalı restorana gidince siz de gitmek</p>
+                        <p style="color: #10b981; font-weight: 600;">✓ Çözüm: Kendi değerlerinize göre harcayın</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Bilinçli Para Yönetimi</h2>
+                <p>
+                    Para ile sağlıklı ilişki kurmanın yolları:
+                </p>
+
+                <div class="strategy-card">
+                    <span class="difficulty" style="background: rgba(34, 197, 94, 0.1); color: rgb(34, 197, 94);">KOLAY</span>
+                    <h4>24 Saat Kuralı</h4>
+                    <p><strong>Nasıl:</strong> Plansız alışverişlerde 24 saat bekleyin</p>
+                    <p style="color: var(--color-accent); font-weight: 600;">📈 Fayda: İmpulsif harcamaları azaltmada yardımcı olabilir</p>
+                </div>
+
+                <div class="strategy-card">
+                    <span class="difficulty" style="background: rgba(249, 115, 22, 0.1); color: rgb(249, 115, 22);">ORTA</span>
+                    <h4>Değer Bazlı Harcama</h4>
+                    <p><strong>Nasıl:</strong> Harcama yapmadan önce 'Bu değerlerime uygun mu?' sorun</p>
+                    <p style="color: var(--color-accent); font-weight: 600;">📈 Fayda: Gereksiz harcamayı minimuma indirir</p>
+                </div>
+
+                <div class="strategy-card">
+                    <span class="difficulty" style="background: rgba(249, 115, 22, 0.1); color: rgb(249, 115, 22);">ORTA</span>
+                    <h4>Zaman-Para Denkliği</h4>
+                    <p><strong>Nasıl:</strong> Fiyatları 'kaç saat çalışma' olarak düşünün</p>
+                    <p style="color: var(--color-accent); font-weight: 600;">📈 Fayda: Harcama perspektifini değiştirir</p>
+                </div>
+
+                <div class="strategy-card">
+                    <span class="difficulty" style="background: rgba(34, 197, 94, 0.1); color: rgb(34, 197, 94);">KOLAY</span>
+                    <h4>Otomatik Tasarruf</h4>
+                    <p><strong>Nasıl:</strong> Maaş gelir gelmez %10-20'sini otomatik ayırın</p>
+                    <p style="color: var(--color-accent); font-weight: 600;">📈 Fayda: Biriktirme disiplinini otomatikleştirir</p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Aylık Bütçe Sistemi: Temelden Kurulum</h2>
+                <p>
+                    Finansal kontrolü sağlamak için etkili bir yöntem: Ayın başında gelir-gider dengesini hesaplamak ve günlük limitler belirlemek.
+                </p>
+
+                <div class="budget-step">
+                    <div class="step-number" style="background: rgba(139, 115, 85, 0.15); color: var(--color-accent);">1</div>
+                    <div>
+                        <h4 style="margin-bottom: 0.8rem;">📥 Ay Başında Toplam Geliri Belirle</h4>
+                        <p><strong>Açıklama:</strong> Maaş, ek gelir, yan iş - tüm kaynakları toplayın</p>
+                        <div class="budget-visual">
+                            <p>Maaş €5.000 + Freelance €2.000</p>
+                            <div class="value">= €7.000</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="budget-step">
+                    <div class="step-number" style="background: rgba(236, 72, 153, 0.15); color: rgb(236, 72, 153);">2</div>
+                    <div>
+                        <h4 style="margin-bottom: 0.8rem;">➖ Sabit Giderleri Çıkar</h4>
+                        <p><strong>Açıklama:</strong> Kira, faturalar, abonelikler, krediler ve diğer giderler</p>
+                        <div class="budget-visual">
+                            <p>€2.600 (kira) + €1.500 (diğer giderler)</p>
+                            <div class="value" style="color: rgb(236, 72, 153);">= €4.100</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="budget-step">
+                    <div class="step-number" style="background: rgba(59, 130, 246, 0.15); color: rgb(59, 130, 246);">3</div>
+                    <div>
+                        <h4 style="margin-bottom: 0.8rem;">🟰 Kalan Parayı Hesapla</h4>
+                        <p><strong>Açıklama:</strong> Gelir - Sabit Gider = Harcanabilir Bütçe</p>
+                        <div class="budget-visual">
+                            <p>€7.000 - €4.100</p>
+                            <div class="value" style="color: rgb(59, 130, 246);">= €2.900</div>
+                            <p style="font-size: 1rem; color: var(--color-text-tertiary);">(aylık serbest bütçe)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="budget-step">
+                    <div class="step-number" style="background: rgba(249, 115, 22, 0.15); color: rgb(249, 115, 22);">4</div>
+                    <div>
+                        <h4 style="margin-bottom: 0.8rem;">📅 Günlük Limit Belirle</h4>
+                        <p><strong>Açıklama:</strong> Aylık bütçeyi 30 güne böl</p>
+                        <div class="budget-visual">
+                            <p>€2.900 ÷ 30</p>
+                            <div class="value" style="color: rgb(249, 115, 22);">≈ €100/gün</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box" style="background: rgba(249, 115, 22, 0.1); border-left-color: rgb(249, 115, 22);">
+                    <p style="color: rgb(249, 115, 22);">
+                        <strong>⚠️ Önemli Not:</strong> Günlük limiti aşarsanız, ertesi günkü limitten düşürün. Harcamazsanız biriktirin. Bu sistem esneklik ve kontrol dengesi sağlar.
+                    </p>
+                </div>
+            </section>
+
+            <div class="highlight-box">
+                <p>
+                    <strong>Sonuç:</strong> Para yönetimi psikolojik bir beceridir. Bilinçli kararlar alarak, bilişsel önyargılardan kaçınarak ve sistematik bütçeleme ile finansal sağlığınızı koruyabilirsiniz.
+                </p>
+            </div>
+        </div>
+    </article>
+
+    <footer id="iletisim" style="margin-top: 5rem;">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h4>Uzm. Psk. Olgu Menevşe</h4>
+                <p>Spor Psikoloğu</p>
+            </div>
+            <div class="footer-services">
+                <p>Bireysel ve Takım Danışmanlığı</p>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2025 Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Spending Psychology Chart
+        const ctx = document.getElementById('spendingChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Duygusal', 'Sosyal', 'İmpulsif', 'Planlı'],
+                datasets: [{
+                    label: 'Harcama Oranı (%)',
+                    data: [42, 28, 18, 12],
+                    backgroundColor: [
+                        'rgba(139, 115, 85, 0.8)',
+                        'rgba(236, 72, 153, 0.8)',
+                        'rgba(249, 115, 22, 0.8)',
+                        'rgba(34, 197, 94, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgb(139, 115, 85)',
+                        'rgb(236, 72, 153)',
+                        'rgb(249, 115, 22)',
+                        'rgb(34, 197, 94)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 50,
+                        title: {
+                            display: true,
+                            text: 'Harcama Oranı (%)',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Tetikleyici',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

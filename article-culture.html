@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mavi Bölgeler: Uzun Yaşamın Sırları - Olgu Menevşe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Text:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .article-detail {
+            padding-top: 150px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+
+        .article-detail-header {
+            margin-bottom: 4rem;
+        }
+
+        .article-detail-category {
+            font-size: 0.85rem;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-detail h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--color-text-primary);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .article-meta-detail {
+            display: flex;
+            gap: 2rem;
+            color: var(--color-text-tertiary);
+            font-size: 0.9rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--color-border-light);
+        }
+
+        .article-content {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.25rem;
+            color: var(--color-text-secondary);
+            line-height: 1.9;
+        }
+
+        .article-content p {
+            margin-bottom: 2rem;
+        }
+
+        .article-content strong {
+            color: var(--color-text-primary);
+            font-weight: 600;
+        }
+
+        .article-section {
+            margin: 0;
+            padding: 0;
+        }
+
+        .article-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--color-text-primary);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .article-section h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            color: var(--color-text-primary);
+            margin: 2.5rem 0 1rem;
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: var(--color-accent-subtle);
+            border-left: 3px solid var(--color-accent);
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            color: var(--color-text-primary);
+            font-weight: 500;
+        }
+
+        .chart-container {
+            margin: 3rem 0;
+            padding: 2.5rem;
+            background: var(--color-background-alt);
+            border-radius: 12px;
+        }
+
+        .chart-container h3 {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .principle-card {
+            background: var(--color-background-alt);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .principle-card .emoji {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .principle-card h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            color: var(--color-text-primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .principle-card p {
+            font-size: 1rem;
+            margin-bottom: 0;
+            color: var(--color-text-tertiary);
+        }
+
+        .culture-card {
+            background: var(--color-background-light);
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+            border-left: 4px solid var(--color-accent);
+        }
+
+        .culture-card .flag {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .culture-card h4 {
+            color: var(--color-text-primary);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .culture-card .subtitle {
+            color: var(--color-text-tertiary);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .culture-detail {
+            background: var(--color-accent-subtle);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 0.8rem 0;
+        }
+
+        .culture-detail strong {
+            color: var(--color-accent);
+        }
+
+        @media screen and (max-width: 768px) {
+            .article-detail {
+                padding-top: 180px;
+            }
+
+            .article-detail h1 {
+                font-size: 2.5rem;
+            }
+
+            .article-content {
+                font-size: 1.15rem;
+            }
+
+            .principles-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-name">Olgu Menevşe</span>
+                <span class="logo-title">Spor Psikoloğu</span>
+            </div>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="index.html#anasayfa">Anasayfa</a></li>
+                    <li><a href="index.html#hakkimda">Hakkımda</a></li>
+                    <li><a href="index.html#sertifikalar">Sertifikalar</a></li>
+                    <li><a href="articles.html">Blog</a></li>
+                    <li><a href="index.html#iletisim">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <article class="article-detail">
+        <div class="article-detail-header">
+            <a href="articles.html" class="back-link">← Tüm Yazılara Dön</a>
+            <span class="article-detail-category">KÜLTÜR & YAŞAM</span>
+            <h1>Mavi Bölgeler: Uzun Yaşamın Sırları</h1>
+            <div class="article-meta-detail">
+                <span>📖 15 dakika okuma</span>
+                <span>📅 18 Ocak 2025</span>
+            </div>
+        </div>
+
+        <div class="article-content">
+            <p>
+                Dünyanın farklı kültürleri sağlıklı yaşamı destekleyen küçük ritüeller geliştirmiştir. Japonların 'Hara Hachi Bu' geleneği ya da İskandinavların doğa ile bağ kurma alışkanlıkları bunlara örnektir.
+            </p>
+
+            <section class="article-section">
+                <h2>🇯🇵 Japon Yaşam Felsefesi: Hara Hachi Bu</h2>
+                <p>
+                    '%80 doyunca ye' prensibini benimseyen Okinawalılar dünyada en uzun yaşayan toplumdur. Bu basit kural aşırı yeme alışkanlığını önler ve metabolizmayı düzenler.
+                </p>
+                <div class="highlight-box">
+                    <p>
+                        💡 Okinawa'da 100 yaş üstü insan oranı dünya ortalamasının 5 katı
+                    </p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>🇸🇪 İskandinav Konsepti: Friluftsliv</h2>
+                <p>
+                    'Açık havada yaşam' anlamına gelen bu felsefe, hava koşulları ne olursa olsun doğada vakit geçirmeyi öğütler. İsveçliler haftada ortalama 5 saat doğada zaman geçirir.
+                </p>
+                <div class="highlight-box">
+                    <p>
+                        🌲 Doğada vakit geçirmek stres hormonlarını %50 azaltır
+                    </p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Mavi Bölgeler: Uzun Yaşam Merkezleri</h2>
+                <p>
+                    Dünya üzerinde insanların en uzun ve sağlıklı yaşadığı bölgeler. Her birinin kendine özgü kültürel sırları var.
+                </p>
+
+                <div class="chart-container">
+                    <h3>Ortalama Yaşam Süresi Karşılaştırması</h3>
+                    <canvas id="longevityChart"></canvas>
+                    <div style="margin-top: 2rem; font-size: 1rem;">
+                        <p><strong>100 Yaş Üstü İnsan Oranı (10.000 kişide):</strong></p>
+                        <p>🇯🇵 Okinawa: 50 | 🇮🇹 Sardinia: 22 | 🇺🇸 Loma Linda: 25 | 🇬🇷 Ikaria: 18 | 🇨🇷 Nicoya: 15</p>
+                        <p>🌍 Dünya Ortalaması: 2</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Mavi Bölgelerin Ortak Özellikleri</h2>
+                <p>
+                    Dan Buettner'in araştırmasına göre tüm mavi bölgelerde tekrarlanan 9 temel yaşam prensibi:
+                </p>
+
+                <div class="principles-grid">
+                    <div class="principle-card">
+                        <span class="emoji">🚶</span>
+                        <h4>Doğal Hareket</h4>
+                        <p>Günlük aktivite, spor değil</p>
+                    </div>
+
+                    <div class="principle-card">
+                        <span class="emoji">🎯</span>
+                        <h4>Yaşam Amacı</h4>
+                        <p>Güçlü 'ikigai' hissi</p>
+                    </div>
+
+                    <div class="principle-card">
+                        <span class="emoji">🍃</span>
+                        <h4>Stres Azaltma</h4>
+                        <p>Günlük ritual/meditasyon</p>
+                    </div>
+
+                    <div class="principle-card">
+                        <span class="emoji">🥗</span>
+                        <h4>80% Kuralı</h4>
+                        <p>Hara hachi bu prensibi</p>
+                    </div>
+
+                    <div class="principle-card">
+                        <span class="emoji">🥕</span>
+                        <h4>Bitki Odaklı</h4>
+                        <p>Et nadir, sebze bol</p>
+                    </div>
+
+                    <div class="principle-card">
+                        <span class="emoji">🍷</span>
+                        <h4>Alkol Moderasyonu</h4>
+                        <p>Sosyal içim, az miktar</p>
+                    </div>
+
+                    <div class="principle-card">
+                        <span class="emoji">👥</span>
+                        <h4>Topluluk</h4>
+                        <p>Güçlü sosyal bağlar</p>
+                    </div>
+
+                    <div class="principle-card">
+                        <span class="emoji">❤️</span>
+                        <h4>Aile Öncelikli</h4>
+                        <p>Yaşlılara saygı</p>
+                    </div>
+
+                    <div class="principle-card">
+                        <span class="emoji">✨</span>
+                        <h4>Doğru Kabile</h4>
+                        <p>Sağlıklı sosyal çevre</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Kültürel Alışkanlıklar Rehberi</h2>
+                <p>
+                    Dünyanın dört bir yanından sağlık destekleyici geleneksel alışkanlıklar:
+                </p>
+
+                <div class="culture-card">
+                    <span class="flag">🇩🇰</span>
+                    <h4>Danimarka - Hygge</h4>
+                    <span class="subtitle">Sıcak, rahat anlarda vakit geçirme</span>
+                    <div class="culture-detail">
+                        <strong>Uygulama:</strong> Mum ışığında kitap okuma, sıcak çay içme
+                    </div>
+                    <div class="culture-detail">
+                        <strong>Fayda:</strong> Stres azaltır, mutluluk hormonu artırır
+                    </div>
+                    <div class="culture-detail">
+                        <strong>Nasıl:</strong> Günde 30 dk rahat aktivite
+                    </div>
+                </div>
+
+                <div class="culture-card">
+                    <span class="flag">🇪🇸</span>
+                    <h4>İspanya - Siesta</h4>
+                    <span class="subtitle">Öğle sonrası kısa uyku</span>
+                    <div class="culture-detail">
+                        <strong>Uygulama:</strong> 13:00-15:00 arası 20-30 dk dinlenme
+                    </div>
+                    <div class="culture-detail">
+                        <strong>Fayda:</strong> Kardiyovasküler sağlık, zihinsel performans
+                    </div>
+                    <div class="culture-detail">
+                        <strong>Nasıl:</strong> Power nap, sessiz ortam
+                    </div>
+                </div>
+
+                <div class="culture-card">
+                    <span class="flag">🇮🇳</span>
+                    <h4>Hindistan - Ayurveda</h4>
+                    <span class="subtitle">Dinacharya (günlük rutin)</span>
+                    <div class="culture-detail">
+                        <strong>Uygulama:</strong> Gün doğumunda uyanma, dosha'ya uygun beslenme
+                    </div>
+                    <div class="culture-detail">
+                        <strong>Fayda:</strong> Enerji dengesi, sindirim düzenleme
+                    </div>
+                    <div class="culture-detail">
+                        <strong>Nasıl:</strong> Sabit uyku/yemek saatleri
+                    </div>
+                </div>
+
+                <div class="culture-card">
+                    <span class="flag">🇰🇷</span>
+                    <h4>Güney Kore - Nunchi</h4>
+                    <span class="subtitle">Sosyal farkındalık ve empati</span>
+                    <div class="culture-detail">
+                        <strong>Uygulama:</strong> Çevredeki insanların duygularını anlama
+                    </div>
+                    <div class="culture-detail">
+                        <strong>Fayda:</strong> Sosyal bağ, stres azaltma
+                    </div>
+                    <div class="culture-detail">
+                        <strong>Nasıl:</strong> Aktif dinleme pratiği
+                    </div>
+                </div>
+            </section>
+
+            <div class="highlight-box">
+                <p>
+                    <strong>Sonuç:</strong> Mavi bölgelerdeki uzun yaşam sırları pahalı tedaviler ya da sıkı rejimler değil, basit günlük ritüellerdir. Bu kültürel alışkanlıkları modern hayatınıza entegre ederek daha sağlıklı ve mutlu bir yaşam sürebilirsiniz.
+                </p>
+            </div>
+        </div>
+    </article>
+
+    <footer id="iletisim" style="margin-top: 5rem;">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h4>Uzm. Psk. Olgu Menevşe</h4>
+                <p>Spor Psikoloğu</p>
+            </div>
+            <div class="footer-services">
+                <p>Bireysel ve Takım Danışmanlığı</p>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2025 Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Longevity Chart
+        const ctx = document.getElementById('longevityChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Okinawa 🇯🇵', 'Loma Linda 🇺🇸', 'Sardinia 🇮🇹', 'Ikaria 🇬🇷', 'Nicoya 🇨🇷', 'Dünya Ort. 🌍'],
+                datasets: [{
+                    label: 'Ortalama Yaşam Süresi',
+                    data: [87, 86, 85, 84, 83, 73],
+                    backgroundColor: [
+                        'rgba(139, 115, 85, 0.8)',
+                        'rgba(139, 115, 85, 0.8)',
+                        'rgba(139, 115, 85, 0.8)',
+                        'rgba(139, 115, 85, 0.8)',
+                        'rgba(139, 115, 85, 0.8)',
+                        'rgba(150, 150, 150, 0.6)'
+                    ],
+                    borderColor: [
+                        'rgba(139, 115, 85, 1)',
+                        'rgba(139, 115, 85, 1)',
+                        'rgba(139, 115, 85, 1)',
+                        'rgba(139, 115, 85, 1)',
+                        'rgba(139, 115, 85, 1)',
+                        'rgba(150, 150, 150, 1)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 70,
+                        max: 90,
+                        title: {
+                            display: true,
+                            text: 'Yaşam Süresi (Yıl)',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Bölge',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

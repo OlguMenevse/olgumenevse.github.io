@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dopamin: Motivasyonun Kimyası - Olgu Menevşe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Text:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .article-detail {
+            padding-top: 150px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+
+        .article-detail-header {
+            margin-bottom: 4rem;
+        }
+
+        .article-detail-category {
+            font-size: 0.85rem;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-detail h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--color-text-primary);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .article-meta-detail {
+            display: flex;
+            gap: 2rem;
+            color: var(--color-text-tertiary);
+            font-size: 0.9rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--color-border-light);
+        }
+
+        .article-content {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.25rem;
+            color: var(--color-text-secondary);
+            line-height: 1.9;
+        }
+
+        .article-content p {
+            margin-bottom: 2rem;
+        }
+
+        .article-content strong {
+            color: var(--color-text-primary);
+            font-weight: 600;
+        }
+
+        .article-section {
+            margin: 0;
+            padding: 0;
+        }
+
+        .article-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--color-text-primary);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .article-section h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            color: var(--color-text-primary);
+            margin: 2.5rem 0 1rem;
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: var(--color-accent-subtle);
+            border-left: 3px solid var(--color-accent);
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            color: var(--color-text-primary);
+            font-weight: 500;
+        }
+
+        .chart-container {
+            margin: 3rem 0;
+            padding: 2.5rem;
+            background: var(--color-background-alt);
+            border-radius: 12px;
+        }
+
+        .chart-container h3 {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .reward-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .reward-card {
+            background: var(--color-background-alt);
+            padding: 1.8rem;
+            border-radius: 12px;
+            border-top: 4px solid var(--color-accent);
+        }
+
+        .reward-card .effectiveness {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            background: var(--color-accent-subtle);
+            color: var(--color-accent);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .reward-card h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            color: var(--color-text-primary);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .reward-card p {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .detox-card {
+            background: var(--color-background-light);
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+            border-left: 4px solid var(--color-accent);
+        }
+
+        .detox-card .difficulty {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 12px;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .detox-card h4 {
+            font-size: 1.2rem;
+            color: var(--color-text-primary);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .healthy-reward-card {
+            background: var(--color-background-alt);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 12px;
+        }
+
+        .healthy-reward-card h4 {
+            font-size: 1.1rem;
+            color: var(--color-text-primary);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .stack-card {
+            background: var(--color-background-alt);
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .stack-visual {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            min-width: 100px;
+        }
+
+        .stack-item {
+            padding: 0.6rem;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .habit-item {
+            background: rgba(59, 130, 246, 0.1);
+            color: rgb(59, 130, 246);
+        }
+
+        .reward-item {
+            background: rgba(236, 72, 153, 0.1);
+            color: rgb(236, 72, 153);
+        }
+
+        @media screen and (max-width: 768px) {
+            .article-detail {
+                padding-top: 180px;
+            }
+
+            .article-detail h1 {
+                font-size: 2.5rem;
+            }
+
+            .article-content {
+                font-size: 1.15rem;
+            }
+
+            .reward-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stack-card {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-name">Olgu Menevşe</span>
+                <span class="logo-title">Spor Psikoloğu</span>
+            </div>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="index.html#anasayfa">Anasayfa</a></li>
+                    <li><a href="index.html#hakkimda">Hakkımda</a></li>
+                    <li><a href="index.html#sertifikalar">Sertifikalar</a></li>
+                    <li><a href="articles.html">Blog</a></li>
+                    <li><a href="index.html#iletisim">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <article class="article-detail">
+        <div class="article-detail-header">
+            <a href="articles.html" class="back-link">← Tüm Yazılara Dön</a>
+            <span class="article-detail-category">NÖROBİLİM</span>
+            <h1>Dopamin: Motivasyonun Kimyası</h1>
+            <div class="article-meta-detail">
+                <span>📖 13 dakika okuma</span>
+                <span>📅 10 Ocak 2025</span>
+            </div>
+        </div>
+
+        <div class="article-content">
+            <p>
+                Beynin ödül mekanizması küçük başarılarla aktive olur. Alışkanlıklarını sürdürmek için küçük ödüller kurgulamak, motivasyonunu uzun vadede korumana yardımcı olur.
+            </p>
+
+            <section class="article-section">
+                <h2>🧠 Dopamin: Motivasyonun Kimyası</h2>
+                <p>
+                    Dopamin 'mutluluk hormonu' değil, <strong>'isteme hormonu'</strong>dur. Ödülü almaktan çok, ödülü beklemek dopamin salgılar. Bu mekanizmayı anlamak alışkanlık tasarımının anahtarıdır.
+                </p>
+                <div class="highlight-box">
+                    <p>
+                        🔬 <strong>Araştırma:</strong> Küçük ödüller büyük ödüllerden %40 daha etkili motivasyon yaratır
+                    </p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>🎯 Ödül Tahmin Hatası (Reward Prediction Error)</h2>
+                <p>
+                    Beyin beklediğinden fazla ödül aldığında dopamin zirve yapar. Sürpriz element ödülü güçlendirir. Öngörülebilir ödüller zamanla etkisini kaybeder.
+                </p>
+                <div class="highlight-box">
+                    <p>
+                        💡 <strong>Taktik:</strong> Değişken oranlı ödüllendirme en bağımlılık yapan sistemdir
+                    </p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Dopamin Salınım Seviyeleri</h2>
+                <p>
+                    Farklı aktivitelerin dopamin üzerindeki etkisi (baseline = %100):
+                </p>
+
+                <div class="chart-container">
+                    <h3>Aktivite Türlerine Göre Dopamin Artışı</h3>
+                    <canvas id="dopamineChart"></canvas>
+                    <p style="margin-top: 1.5rem; font-size: 1rem; color: #f59e0b;">
+                        ⚠️ <strong>Dikkat:</strong> Yapay uyarılar (sosyal medya, oyun) doğal ödülleri köreltir
+                    </p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Etkili Ödül Sistemleri Tasarımı</h2>
+                <p>
+                    Alışkanlıklarını güçlendirecek ödül mekanizmalarını nasıl kuracaksın:
+                </p>
+
+                <div class="reward-grid">
+                    <div class="reward-card">
+                        <span class="effectiveness">YÜKSEK</span>
+                        <h4>⏰ Anında Ödül</h4>
+                        <p><strong>Ne zaman:</strong> Alışkanlığı yaptıktan hemen sonra</p>
+                        <p><strong>Örnek:</strong> Egzersizden sonra favori çayını iç</p>
+                    </div>
+
+                    <div class="reward-card">
+                        <span class="effectiveness">ORTA</span>
+                        <h4>📅 Haftalık Ödül</h4>
+                        <p><strong>Ne zaman:</strong> 7 gün üst üste başarıda</p>
+                        <p><strong>Örnek:</strong> Hafta sonu sinema/masaj</p>
+                    </div>
+
+                    <div class="reward-card">
+                        <span class="effectiveness">ÇOK YÜKSEK</span>
+                        <h4>🎁 Sürpriz Ödül</h4>
+                        <p><strong>Ne zaman:</strong> Rastgele zamanlarda ver</p>
+                        <p><strong>Örnek:</strong> Zar at, 6 gelirse ödül</p>
+                    </div>
+
+                    <div class="reward-card">
+                        <span class="effectiveness">ORTA</span>
+                        <h4>📈 Gelişim Ödülü</h4>
+                        <p><strong>Ne zaman:</strong> Milestone'lara dayalı</p>
+                        <p><strong>Örnek:</strong> 30 gün sonra yeni kitap</p>
+                    </div>
+
+                    <div class="reward-card">
+                        <span class="effectiveness">YÜKSEK</span>
+                        <h4>👥 Sosyal Ödül</h4>
+                        <p><strong>Ne zaman:</strong> Başarını paylaş, övgü al</p>
+                        <p><strong>Örnek:</strong> Instagram story, arkadaş tebriği</p>
+                    </div>
+
+                    <div class="reward-card">
+                        <span class="effectiveness">SÜRDÜRÜLEBİLİR</span>
+                        <h4>⭐ İçsel Ödül</h4>
+                        <p><strong>Ne zaman:</strong> Kendi kendini övmek</p>
+                        <p><strong>Örnek:</strong> 'Bugün harika biriyim' de</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Dopamin Detoksu</h2>
+                <p>
+                    Dopamin reseptörlerini sıfırlamak için yapay uyarılardan uzak durmak:
+                </p>
+
+                <div class="detox-card">
+                    <span class="difficulty" style="background: rgba(34, 197, 94, 0.1); color: rgb(34, 197, 94);">KOLAY</span>
+                    <h4>Level 1: Mikro Detoks (1-2 saat)</h4>
+                    <p><strong>🚫 Yasak:</strong> Telefon, Sosyal medya, Müzik</p>
+                    <p><strong>✅ Yapılacak:</strong> Sessizce otur, Nefes al, Düşün</p>
+                    <p><strong>🎯 Fayda:</strong> Anında rahatlama</p>
+                </div>
+
+                <div class="detox-card">
+                    <span class="difficulty" style="background: rgba(249, 115, 22, 0.1); color: rgb(249, 115, 22);">ORTA</span>
+                    <h4>Level 2: Günlük Detoks (1 gün)</h4>
+                    <p><strong>🚫 Yasak:</strong> Tüm ekranlar, Müzik, Şeker, Kafeyn</p>
+                    <p><strong>✅ Yapılacak:</strong> Doğa yürüyüşü, Kitap, Meditasyon</p>
+                    <p><strong>🎯 Fayda:</strong> Zihinsel berraklık</p>
+                </div>
+
+                <div class="detox-card">
+                    <span class="difficulty" style="background: rgba(239, 68, 68, 0.1); color: rgb(239, 68, 68);">ZOR</span>
+                    <h4>Level 3: Haftalık Detoks (7 gün)</h4>
+                    <p><strong>🚫 Yasak:</strong> Sosyal medya, YouTube, Netflix, Oyunlar</p>
+                    <p><strong>✅ Yapılacak:</strong> Hobiler, Spor, Sosyal aktivite</p>
+                    <p><strong>🎯 Fayda:</strong> Dopamin sıfırlama</p>
+                </div>
+
+                <div class="detox-card">
+                    <span class="difficulty" style="background: rgba(168, 85, 247, 0.1); color: rgb(168, 85, 247);">EKSTREM</span>
+                    <h4>Level 4: Tam Detoks (30 gün)</h4>
+                    <p><strong>🚫 Yasak:</strong> Tüm eğlence teknolojisi, Hızlı yemek, Alışveriş</p>
+                    <p><strong>✅ Yapılacak:</strong> Yaratıcılık, İnsan ilişkileri, Kitap</p>
+                    <p><strong>🎯 Fayda:</strong> Hayat perspektifi</p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Sağlıklı Ödül Alternatifleri</h2>
+                <p>
+                    Dopamin salgılayan ama uzun vadede zarar vermeyen ödüller:
+                </p>
+
+                <div class="healthy-reward-card">
+                    <h4>🖐️ Duyusal Ödüller</h4>
+                    <p>Güzel kokulu mum yak • Rahat kıyafet giy • Sıcak banyo yap • Doğa seslerini dinle</p>
+                </div>
+
+                <div class="healthy-reward-card">
+                    <h4>👥 Sosyal Ödüller</h4>
+                    <p>Arkadaşını ara • Aile ile vakit geçir • Yeni insan tanı • Sevdiklerine mesaj at</p>
+                </div>
+
+                <div class="healthy-reward-card">
+                    <h4>🎨 Yaratıcı Ödüller</h4>
+                    <p>Resim çiz • Müzik yap • Yazı yaz • El sanatları</p>
+                </div>
+
+                <div class="healthy-reward-card">
+                    <h4>🚶 Aktivite Ödülleri</h4>
+                    <p>Yeni yer keşfet • Farklı yemek dene • Hobi edin • Öğren</p>
+                </div>
+
+                <div class="healthy-reward-card">
+                    <h4>🛏️ Dinlenme Ödülleri</h4>
+                    <p>Kaliteli uyku • Masaj • Meditasyon • Hiçbir şey yapmama</p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Alışkanlık + Ödül Birleştirme</h2>
+                <p>
+                    Alışkanlığın hemen ardından doğal ödül gelecek şekilde tasarımla:
+                </p>
+
+                <div class="stack-card">
+                    <div class="stack-visual">
+                        <div class="stack-item habit-item">Sabah egzersizi</div>
+                        <div style="text-align: center; font-size: 1.2rem;">+</div>
+                        <div class="stack-item reward-item">Favori kahve/çay</div>
+                    </div>
+                    <div>
+                        <p><strong>Açıklama:</strong> Endorfin + kafein kombinasyonu</p>
+                        <p><strong>⏱️ Zaman:</strong> Hemen sonra</p>
+                    </div>
+                </div>
+
+                <div class="stack-card">
+                    <div class="stack-visual">
+                        <div class="stack-item habit-item">Günlük okuma</div>
+                        <div style="text-align: center; font-size: 1.2rem;">+</div>
+                        <div class="stack-item reward-item">Rahat koltuğa uzanma</div>
+                    </div>
+                    <div>
+                        <p><strong>Açıklama:</strong> Bilişsel çaba + fiziksel rahatlık</p>
+                        <p><strong>⏱️ Zaman:</strong> Okurken</p>
+                    </div>
+                </div>
+
+                <div class="stack-card">
+                    <div class="stack-visual">
+                        <div class="stack-item habit-item">Meditasyon</div>
+                        <div style="text-align: center; font-size: 1.2rem;">+</div>
+                        <div class="stack-item reward-item">Güzel müzik dinleme</div>
+                    </div>
+                    <div>
+                        <p><strong>Açıklama:</strong> Zihinsel sessizlik + işitsel zevk</p>
+                        <p><strong>⏱️ Zaman:</strong> Hemen sonra</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="highlight-box">
+                <p>
+                    <strong>Sonuç:</strong> Dopamin sistemini anlamak ve doğru ödül mekanizmaları kurmak, sürdürülebilir alışkanlıkların temelidir. Yapay uyarılardan kaçının, doğal ödülleri tercih edin.
+                </p>
+            </div>
+        </div>
+    </article>
+
+    <footer id="iletisim" style="margin-top: 5rem;">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h4>Uzm. Psk. Olgu Menevşe</h4>
+                <p>Spor Psikoloğu</p>
+            </div>
+            <div class="footer-services">
+                <p>Bireysel ve Takım Danışmanlığı</p>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2025 Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dopamine Chart
+        const ctx = document.getElementById('dopamineChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Yemek', 'Seks', 'Egzersiz', 'Müzik', 'Sosyal Medya', 'Oyun'],
+                datasets: [{
+                    label: 'Dopamin Artışı (%)',
+                    data: [150, 200, 130, 110, 75, 80],
+                    backgroundColor: [
+                        'rgba(34, 197, 94, 0.8)',
+                        'rgba(34, 197, 94, 0.8)',
+                        'rgba(59, 130, 246, 0.8)',
+                        'rgba(59, 130, 246, 0.8)',
+                        'rgba(239, 68, 68, 0.8)',
+                        'rgba(239, 68, 68, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgb(34, 197, 94)',
+                        'rgb(34, 197, 94)',
+                        'rgb(59, 130, 246)',
+                        'rgb(59, 130, 246)',
+                        'rgb(239, 68, 68)',
+                        'rgb(239, 68, 68)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 0,
+                        max: 250,
+                        title: {
+                            display: true,
+                            text: 'Dopamin Artışı (%)',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Aktivite',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

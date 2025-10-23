@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beslenme: Bağırsak Sağlığı ve Mikrobiyom - Olgu Menevşe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Text:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .article-detail {
+            padding-top: 150px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+
+        .article-detail-header {
+            margin-bottom: 1rem;
+        }
+
+        .article-detail-category {
+            font-size: 0.85rem;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: 500;
+            display: block;
+            margin-bottom: .5rem;
+        }
+
+        .article-detail h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--color-text-primary);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .article-meta-detail {
+            display: flex;
+            gap: 2rem;
+            color: var(--color-text-tertiary);
+            font-size: 0.9rem;
+            padding-bottom: 0rem;
+            border-bottom: 1px solid var(--color-border-light);
+        }
+
+        .article-content {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.25rem;
+            color: var(--color-text-secondary);
+            line-height: 1.9;
+        }
+
+        .article-content p {
+            margin-bottom: 0rem;
+        }
+
+        .article-content strong {
+            color: var(--color-text-primary);
+            font-weight: 600;
+        }
+
+        .article-section {
+            margin: 0;
+            padding: 0;
+        }
+
+        .article-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--color-text-primary);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .article-section h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            color: var(--color-text-primary);
+            margin: 2.5rem 0 1rem;
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: var(--color-accent-subtle);
+            border-left: 3px solid var(--color-accent);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            color: var(--color-text-primary);
+            font-weight: 500;
+        }
+
+        .food-card {
+            background: var(--color-background-alt);
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+
+        .food-card .food-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .food-card .food-emoji {
+            font-size: 2rem;
+            margin-right: 0.5rem;
+        }
+
+        .food-card h4 {
+            font-size: 1.3rem;
+            color: var(--color-text-primary);
+            font-weight: 600;
+        }
+
+        .food-card .badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            padding: 0.3rem 0.8rem;
+            background: #10b981;
+            color: white;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .food-card .detail {
+            padding: 0.6rem 1rem;
+            margin: 0.5rem 0;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .food-card .bacteria-detail {
+            background: rgba(59, 130, 246, 0.1);
+            color: rgb(59, 130, 246);
+        }
+
+        .food-card .benefit-detail {
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        .food-card .howto-detail {
+            color: rgb(99, 102, 241);
+            font-weight: 600;
+        }
+
+        .research-card {
+            background: var(--color-background-alt);
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+
+        .research-card .category-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .research-card h4 {
+            font-size: 1.1rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .research-card .finding {
+            font-size: 1.1rem;
+            color: var(--color-text-primary);
+            font-weight: 600;
+        }
+
+        .tips-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .tips-list li {
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            background: var(--color-background-alt);
+            border-left: 3px solid var(--color-accent);
+            border-radius: 0 8px 8px 0;
+        }
+
+        @media screen and (max-width: 768px) {
+            .article-detail {
+                padding-top: 180px;
+            }
+
+            .article-detail h1 {
+                font-size: 2.5rem;
+            }
+
+            .article-content {
+                font-size: 1.15rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-name">Olgu Menevşe</span>
+                <span class="logo-title">Spor Psikoloğu</span>
+            </div>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="index.html#anasayfa">Anasayfa</a></li>
+                    <li><a href="index.html#hakkimda">Hakkımda</a></li>
+                    <li><a href="index.html#sertifikalar">Sertifikalar</a></li>
+                    <li><a href="articles.html">Blog</a></li>
+                    <li><a href="index.html#iletisim">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <article class="article-detail">
+        <div class="article-detail-header">
+            <a href="articles.html" class="back-link">← Tüm Yazılara Dön</a>
+            <span class="article-detail-category">BESLENME & MİKROBİYOM</span>
+            <h1>Bağırsak Sağlığı: İkinci Beyin</h1>
+            <div class="article-meta-detail">
+                <span>📖 12 dakika okuma</span>
+                <span>📅 5 Ocak 2025</span>
+            </div>
+        </div>
+
+        <div class="article-content">
+            <p>
+                Prebiyotikler, fermente gıdalar ve lif dengesi gibi unsurlar sağlıklı bir sindirim sistemi için kritik rol oynar. Küçük beslenme tercihleri, uzun vadede büyük farklar yaratır.
+            </p>
+
+            <section class="article-section">
+                <h2>Bağırsak-Beyin Bağlantısı: İkinci Beyin</h2>
+                <p>
+                    Bağırsaklarımızda <strong>500 milyon nöron</strong> bulunur - spinal korddan daha fazla! Bu 'enterik sinir sistemi' ruh halimizi, enerjimizi ve karar verme yetimizi doğrudan etkiler.
+                </p>
+                <div class="highlight-box">
+                    <p>
+                        🧠 Bağırsaktaki bakteriler serotonin (%90) ve dopamin (%50) üretimi etkiler
+                    </p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Mikrobiyom: İçimizdeki Ekosistem</h2>
+                <p>
+                    <strong>100 trilyon bakteri</strong> vücudumuzda yaşar - hücrelerimizden 10 kat fazla! Bu mikroorganizmalar bağışıklık sistemini, metabolizmayı ve hatta kişiliği etkileyebilir.
+                </p>
+                <div class="highlight-box">
+                    <p>
+                        🔬 Çeşitlilik anahtardır: 1000+ farklı bakteri türü optimal sağlık için gerekli
+                    </p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Fermente Gıdaların Gücü</h2>
+                <p>
+                    Fermente gıdalar, bağırsak sağlığını destekleyen doğal probiyotik kaynaklarıdır:
+                </p>
+
+                <div class="food-card">
+                    <div class="food-header">
+                        <div style="display: flex; align-items: center;">
+                            <span class="food-emoji">🥛</span>
+                            <h4>Kefir</h4>
+                        </div>
+                        <span class="badge">PROBİYOTİK</span>
+                    </div>
+                    <div class="detail bacteria-detail">
+                        Aktif bakteri: 50+ probiyotik suş
+                    </div>
+                    <p class="detail benefit-detail">
+                        Fayda: Bağışıklık sistemi güçlendirme
+                    </p>
+                    <p class="detail howto-detail">
+                        Nasıl: Günde 1 bardak, sabah aç karnına
+                    </p>
+                </div>
+
+                <div class="food-card">
+                    <div class="food-header">
+                        <div style="display: flex; align-items: center;">
+                            <span class="food-emoji">🥒</span>
+                            <h4>Turşu (Sirke olmayan)</h4>
+                        </div>
+                        <span class="badge">PROBİYOTİK</span>
+                    </div>
+                    <div class="detail bacteria-detail">
+                        Aktif bakteri: Lactobacillus
+                    </div>
+                    <p class="detail benefit-detail">
+                        Fayda: Sindirim enzim artışı
+                    </p>
+                    <p class="detail howto-detail">
+                        Nasıl: Öğünlerle birlikte küçük porsiyon
+                    </p>
+                </div>
+
+                <div class="food-card">
+                    <div class="food-header">
+                        <div style="display: flex; align-items: center;">
+                            <span class="food-emoji">🍲</span>
+                            <h4>Miso</h4>
+                        </div>
+                        <span class="badge">PROBİYOTİK</span>
+                    </div>
+                    <div class="detail bacteria-detail">
+                        Aktif bakteri: Aspergillus oryzae
+                    </div>
+                    <p class="detail benefit-detail">
+                        Fayda: Protein emilimi artırma
+                    </p>
+                    <p class="detail howto-detail">
+                        Nasıl: Çorba olarak haftada 2-3 kez
+                    </p>
+                </div>
+
+                <div class="food-card">
+                    <div class="food-header">
+                        <div style="display: flex; align-items: center;">
+                            <span class="food-emoji">🥬</span>
+                            <h4>Sauerkraut</h4>
+                        </div>
+                        <span class="badge">PROBİYOTİK</span>
+                    </div>
+                    <div class="detail bacteria-detail">
+                        Aktif bakteri: Çok çeşitli laktobasil
+                    </div>
+                    <p class="detail benefit-detail">
+                        Fayda: Vitamin C ve K2 üretimi
+                    </p>
+                    <p class="detail howto-detail">
+                        Nasıl: Salata yanında 2 yemek kaşığı
+                    </p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Beslenme Araştırmaları</h2>
+
+                <div class="research-card">
+                    <span class="category-badge" style="background: rgba(168, 85, 247, 0.1); color: rgb(168, 85, 247);">MİKROBİYOM</span>
+                    <h4>Harvard T.H. Chan - Gut Microbiome Study</h4>
+                    <p class="finding">Çeşitli beslenme mikrobiyom zenginliğini %73 artırır</p>
+                </div>
+
+                <div class="research-card">
+                    <span class="category-badge" style="background: rgba(239, 68, 68, 0.1); color: rgb(239, 68, 68);">KARDİYOVASKÜLER</span>
+                    <h4>Stanford Medicine - Fiber Study</h4>
+                    <p class="finding">Günde 25g lif tüketimi kalp hastalığı riskini %30 azaltır</p>
+                </div>
+
+                <div class="research-card">
+                    <span class="category-badge" style="background: rgba(59, 130, 246, 0.1); color: rgb(59, 130, 246);">MENTAL SAĞLIK</span>
+                    <h4>UCLA - Fermented Foods Research</h4>
+                    <p class="finding">12 haftalık fermente gıda tüketimi stres seviyesini %40 düşürür</p>
+                </div>
+
+                <div class="research-card">
+                    <span class="category-badge" style="background: rgba(249, 115, 22, 0.1); color: rgb(249, 115, 22);">NÖROLOJİ</span>
+                    <h4>Journal of Nutrition - Omega-3 Study</h4>
+                    <p class="finding">Haftada 2 porsiyon yağlı balık beyin fonksiyonlarını %25 iyileştirir</p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Pratik Uygulamalar</h2>
+                <h3>Bağırsak Sağlığı için Öneriler</h3>
+
+                <ul class="tips-list">
+                    <li>🥗 Günlük sebze/meyve sayısını takip ederek çeşitliliği artırın</li>
+                    <li>💧 Su tüketim alışkanlığı oluşturun - günde 8 bardak hedefleyin</li>
+                    <li>🥛 Fermente gıda alışkanlığı ekleyin (yoğurt, kefir, turşu)</li>
+                    <li>📸 Öğünlerinizi fotoğraflayarak beslenme düzeninizi kaydedin</li>
+                </ul>
+
+                <h3>Örnek Alışkanlıklar</h3>
+                <ul class="tips-list">
+                    <li>🥗 'Günde 5 porsiyon sebze'</li>
+                    <li>💧 'Sabah 2 bardak su içerim'</li>
+                    <li>🥛 '1 kase yoğurt tüketirim'</li>
+                    <li>🍎 'Atıştırmalık meyve yerim'</li>
+                </ul>
+            </section>
+
+            <div class="highlight-box">
+                <p>
+                    <strong>Sonuç:</strong> Bağırsak sağlığı genel sağlığın temelidir. Fermente gıdalar, lif açısından zengin beslenme ve çeşitli diyet, mikrobiyomunuzu güçlendirir ve hem fiziksel hem mental sağlığınızı destekler.
+                </p>
+            </div>
+        </div>
+    </article>
+
+    <footer id="iletisim" style="margin-top: 5rem;">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h4>Uzm. Psk. Olgu Menevşe</h4>
+                <p>Spor Psikoloğu</p>
+            </div>
+            <div class="footer-services">
+                <p>Bireysel ve Takım Danışmanlığı</p>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2025 Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

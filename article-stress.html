@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stres: Vücut ve Zihin Üzerindeki Etkileri - Olgu Menevşe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Text:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .article-detail {
+            padding-top: 150px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+
+        .article-detail-header {
+            margin-bottom: 4rem;
+        }
+
+        .article-detail-category {
+            font-size: 0.85rem;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-detail h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--color-text-primary);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .article-meta-detail {
+            display: flex;
+            gap: 2rem;
+            color: var(--color-text-tertiary);
+            font-size: 0.9rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--color-border-light);
+        }
+
+        .article-content {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.25rem;
+            color: var(--color-text-secondary);
+            line-height: 1.9;
+        }
+
+        .article-content p {
+            margin-bottom: 2rem;
+        }
+
+        .article-content strong {
+            color: var(--color-text-primary);
+            font-weight: 600;
+        }
+
+        .article-section {
+            margin: 0;
+            padding: 0;
+        }
+
+        .article-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--color-text-primary);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .article-section h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            color: var(--color-text-primary);
+            margin: 2.5rem 0 1rem;
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: var(--color-accent-subtle);
+            border-left: 3px solid var(--color-accent);
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            color: var(--color-text-primary);
+            font-weight: 500;
+        }
+
+        .chart-container {
+            margin: 3rem 0;
+            padding: 2.5rem;
+            background: var(--color-background-alt);
+            border-radius: 12px;
+        }
+
+        .chart-container h3 {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .system-card {
+            background: var(--color-background-alt);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 12px;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .system-icon {
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        .system-content p {
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .relief-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .relief-list li {
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            background: var(--color-background-alt);
+            border-left: 3px solid var(--color-accent);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .source-card {
+            background: var(--color-background-light);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 12px;
+            border-left: 4px solid var(--color-accent);
+        }
+
+        .source-card h4 {
+            font-size: 1.1rem;
+            color: var(--color-text-primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .source-card p {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .source-card a {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .source-card a:hover {
+            text-decoration: underline;
+        }
+
+        @media screen and (max-width: 768px) {
+            .article-detail {
+                padding-top: 180px;
+            }
+
+            .article-detail h1 {
+                font-size: 2.5rem;
+            }
+
+            .article-content {
+                font-size: 1.15rem;
+            }
+
+            .system-card {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-name">Olgu Menevşe</span>
+                <span class="logo-title">Spor Psikoloğu</span>
+            </div>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="index.html#anasayfa">Anasayfa</a></li>
+                    <li><a href="index.html#hakkimda">Hakkımda</a></li>
+                    <li><a href="index.html#sertifikalar">Sertifikalar</a></li>
+                    <li><a href="articles.html">Blog</a></li>
+                    <li><a href="index.html#iletisim">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <article class="article-detail">
+        <div class="article-detail-header">
+            <a href="articles.html" class="back-link">← Tüm Yazılara Dön</a>
+            <span class="article-detail-category">STRES BİLİMİ</span>
+            <h1>Stres: Vücut ve Zihin Üzerindeki Etkileri</h1>
+            <div class="article-meta-detail">
+                <span>📖 14 dakika okuma</span>
+                <span>📅 1 Ocak 2025</span>
+            </div>
+        </div>
+
+        <div class="article-content">
+            <p>
+                Stres, bir dizi fizyolojik reaksiyonu tetikler - hormon artışlarından bağışıklık değişimlerine kadar. Kısa vadeli stres tehlikeye yanıt vermemize yardımcı olabilir, ancak sürekli hale geldiğinde zararlı olur ve kronik hastalık riskine katkıda bulunabilir.
+            </p>
+
+            <div class="highlight-box">
+                <p>
+                    <strong>Kaynak:</strong> Harvard Health - Understanding the Stress Response
+                </p>
+            </div>
+
+            <section class="article-section">
+                <h2>Stres Yanıtı: Savaş-ya-da-Kaç ve HPA Ekseni</h2>
+                <p>
+                    Bir tehdit algılandığında, amigdala hipotalamusa sinyal gönderir, sempatik sinir sistemini ve adrenal bezlerden epinefrin (adrenalin) salınımını tetikler. Ardından HPA ekseni (hipotalamus → hipofiz → adrenal bezler) tetikte kalma durumunu sürdürmek için kortizol salgılar.
+                </p>
+                <p>
+                    Bu sistem kronik olarak aktif kalırsa, hipertansiyon, anksiyete, metabolik değişiklikler ve vasküler hasara katkıda bulunabilir.
+                </p>
+                <div class="highlight-box">
+                    <p>
+                        🧠 <strong>Harvard Araştırması:</strong> Kronik stres, beyin yapısını değiştirebilir ve hafıza merkezini (hipokampus) olumsuz etkileyebilir.
+                    </p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Kronik Stresin Sistemik Etkileri</h2>
+                <p>
+                    Stres, vücudun birçok sistemini etkiler:
+                </p>
+
+                <div class="system-card">
+                    <div class="system-icon">❤️</div>
+                    <div class="system-content">
+                        <p><strong>Kardiyovasküler Sistem:</strong> Uzun vadeli stres kan basıncını yükseltebilir ve arteriyel plak oluşumunu teşvik edebilir.</p>
+                        <p style="font-size: 0.9rem; color: var(--color-text-tertiary); margin-top: 0.5rem;">Kaynak: Harvard Health</p>
+                    </div>
+                </div>
+
+                <div class="system-card">
+                    <div class="system-icon">🫁</div>
+                    <div class="system-content">
+                        <p><strong>Solunum Sistemi:</strong> Stres, hava yollarını sıkıştırarak solunum problemlerini (örn. astım) kötüleştirebilir.</p>
+                        <p style="font-size: 0.9rem; color: var(--color-text-tertiary); margin-top: 0.5rem;">Kaynak: American Psychological Association</p>
+                    </div>
+                </div>
+
+                <div class="system-card">
+                    <div class="system-icon">🔥</div>
+                    <div class="system-content">
+                        <p><strong>Bağışıklık ve İnflamasyon:</strong> Kronik stres, düşük dereceli inflamatuar duruma yol açabilir ve enfeksiyonlara karşı direnci zayıflatabilir.</p>
+                        <p style="font-size: 0.9rem; color: var(--color-text-tertiary); margin-top: 0.5rem;">Kaynak: Harvard & APA</p>
+                    </div>
+                </div>
+
+                <div class="system-card">
+                    <div class="system-icon">🧠</div>
+                    <div class="system-content">
+                        <p><strong>Beyin ve Kognitif Fonksiyon:</strong> Uzun süreli stres, hipokampal nöronları (hafıza merkezi) bozabilir ve beyni tehdit yanıtlarına yönlendirir.</p>
+                        <p style="font-size: 0.9rem; color: var(--color-text-tertiary); margin-top: 0.5rem;">Kaynak: Harvard Health</p>
+                    </div>
+                </div>
+
+                <div class="system-card">
+                    <div class="system-icon">🌿</div>
+                    <div class="system-content">
+                        <p><strong>Endokrin ve Metabolik Sistem:</strong> Aşırı kortizol, iştahı artırabilir, yağ depolanmasını teşvik edebilir ve glukoz metabolizmasını bozabilir.</p>
+                        <p style="font-size: 0.9rem; color: var(--color-text-tertiary); margin-top: 0.5rem;">Kaynak: Harvard Health</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Hormonal Denge ve Stres</h2>
+                <p>
+                    Stres seviyeleri değiştikçe, vücudumuzun hormon dengesi de değişir:
+                </p>
+
+                <div class="chart-container">
+                    <h3>Stres Seviyesine Göre Hormon Dengesi</h3>
+                    <p style="font-size: 0.9rem; color: var(--color-text-tertiary); margin-bottom: 1.5rem;">
+                        *Örnek gösterim. Gerçek hormon seviyeleri bireysel olarak değişir.
+                    </p>
+                    <canvas id="stressChart"></canvas>
+                </div>
+
+                <p style="font-size: 1rem; color: var(--color-text-tertiary); font-style: italic;">
+                    Yüksek stres durumunda kortizol artar, DHEA ve serotonin gibi koruyucu hormonlar azalır.
+                </p>
+            </section>
+
+            <section class="article-section">
+                <h2>Stres Azaltma ve Dayanıklılık Stratejileri</h2>
+
+                <ul class="relief-list">
+                    <li>🧘‍♀️ Derin nefes, meditasyon ve rehberli görselleştirme, stres kaskadına karşı "gevşeme yanıtı" uyandırmaya yardımcı olur. <em>(Harvard)</em></li>
+                    <li>🏃 Düzenli fiziksel aktivite stres hormon seviyelerini azaltır, ruh halini iyileştiren endorfinleri artırır ve metabolik sağlığı destekler. <em>(Harvard)</em></li>
+                    <li>😴 Yeterli uyku (≥ 7 saat), sosyal bağlantılar ve çoğunlukla bitki bazlı diyet strese karşı dayanıklılığı geliştirir. <em>(Harvard)</em></li>
+                    <li>🧠 Aşamalı kas gevşetme, farkındalık molaları, yapılandırılmış hedefler ve bilişsel yeniden çerçeveleme, stres yükünü azaltmada etkili araçlardır. <em>(Harvard)</em></li>
+                </ul>
+            </section>
+
+            <section class="article-section">
+                <h2>Araştırma ve Kaynaklar</h2>
+
+                <div class="source-card">
+                    <h4>Harvard Health — Understanding the Stress Response</h4>
+                    <p>Kronik stres yüksek tansiyon, beyin değişiklikleri ve metabolik kaymalara katkıda bulunur.</p>
+                    <a href="https://www.health.harvard.edu/staying-healthy/understanding-the-stress-response" target="_blank">Kaynağa Git →</a>
+                </div>
+
+                <div class="source-card">
+                    <h4>American Psychological Association — Stress Effects on Body Systems</h4>
+                    <p>Stres kardiyovasküler, solunum, endokrin ve bağışıklık sistemleri dahil olmak üzere sistemleri etkiler.</p>
+                    <a href="https://www.apa.org/topics/stress/body" target="_blank">Kaynağa Git →</a>
+                </div>
+
+                <div class="source-card">
+                    <h4>Harvard Health — Ways to Reduce Daily Stress</h4>
+                    <p>Uyku, diyet, egzersiz, farkındalık - tümü stresin olumsuz etkisine karşı koruma sağlar.</p>
+                    <a href="https://www.health.harvard.edu/staying-healthy/top-ways-to-reduce-daily-stress" target="_blank">Kaynağa Git →</a>
+                </div>
+            </section>
+
+            <div class="highlight-box">
+                <p>
+                    <strong>Sonuç:</strong> Stres yönetimi, genel sağlığın temel taşlarından biridir. Kronik stresin fiziksel ve zihinsel etkilerini anlamak, etkili başa çıkma stratejileri geliştirmenin ilk adımıdır. Düzenli egzersiz, yeterli uyku, sosyal destek ve farkındalık teknikleri, strese karşı dayanıklılığınızı artırabilir.
+                </p>
+            </div>
+        </div>
+    </article>
+
+    <footer id="iletisim" style="margin-top: 5rem;">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h4>Uzm. Psk. Olgu Menevşe</h4>
+                <p>Spor Psikoloğu</p>
+            </div>
+            <div class="footer-services">
+                <p>Bireysel ve Takım Danışmanlığı</p>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2025 Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Stress Hormone Chart
+        const ctx = document.getElementById('stressChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Düşük Stres', 'Orta Stres', 'Yüksek Stres'],
+                datasets: [
+                    {
+                        label: 'Kortizol',
+                        data: [30, 60, 95],
+                        backgroundColor: 'rgba(239, 68, 68, 0.8)',
+                        borderColor: 'rgb(239, 68, 68)',
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'DHEA',
+                        data: [80, 50, 20],
+                        backgroundColor: 'rgba(59, 130, 246, 0.8)',
+                        borderColor: 'rgb(59, 130, 246)',
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'Serotonin',
+                        data: [90, 60, 30],
+                        backgroundColor: 'rgba(34, 197, 94, 0.8)',
+                        borderColor: 'rgb(34, 197, 94)',
+                        borderWidth: 2
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Hormon Seviyesi (göreceli)',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Stres Durumu',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

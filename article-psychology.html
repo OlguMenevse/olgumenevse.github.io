@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alışkanlıkların Psikolojisi - Olgu Menevşe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Text:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .article-detail {
+            padding-top: 150px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+
+        .article-detail-header {
+            margin-bottom: 4rem;
+        }
+
+        .article-detail-category {
+            font-size: 0.85rem;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-detail h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--color-text-primary);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .article-meta-detail {
+            display: flex;
+            gap: 2rem;
+            color: var(--color-text-tertiary);
+            font-size: 0.9rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--color-border-light);
+        }
+
+        .article-content {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.25rem;
+            color: var(--color-text-secondary);
+            line-height: 1.9;
+        }
+
+        .article-content p {
+            margin-bottom: 2rem;
+        }
+
+        .article-content strong {
+            color: var(--color-text-primary);
+            font-weight: 600;
+        }
+
+        .article-section {
+            margin: 0;
+            padding: 0;
+        }
+
+        .article-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--color-text-primary);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .article-section h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            color: var(--color-text-primary);
+            margin: 2.5rem 0 1rem;
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: var(--color-accent-subtle);
+            border-left: 3px solid var(--color-accent);
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            color: var(--color-text-primary);
+            font-weight: 500;
+        }
+
+        .habit-loop {
+            background: var(--color-background-alt);
+            padding: 2.5rem;
+            margin: 2rem 0;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .habit-loop .loop-items {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .habit-loop .loop-item {
+            background: var(--color-background-light);
+            padding: 1.5rem;
+            border-radius: 12px;
+            min-width: 150px;
+        }
+
+        .habit-loop .loop-item h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .habit-loop .arrow {
+            font-size: 2rem;
+            color: var(--color-accent);
+        }
+
+        .mistake-card {
+            background: var(--color-background-alt);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 12px;
+        }
+
+        .mistake-card .mistake {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .mistake-card .solution {
+            font-size: 1rem;
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        .research-card {
+            background: var(--color-background-alt);
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+
+        .research-card .badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .research-card .percentage {
+            font-size: 1.5rem;
+            font-weight: bold;
+            float: right;
+        }
+
+        .research-card h4 {
+            font-size: 1.1rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .research-card .finding {
+            font-size: 1.1rem;
+            color: var(--color-text-primary);
+            font-weight: 600;
+        }
+
+        .tips-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .tips-list li {
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            background: var(--color-background-alt);
+            border-left: 3px solid var(--color-accent);
+            border-radius: 0 8px 8px 0;
+        }
+
+        @media screen and (max-width: 768px) {
+            .article-detail {
+                padding-top: 180px;
+            }
+
+            .article-detail h1 {
+                font-size: 2.5rem;
+            }
+
+            .article-content {
+                font-size: 1.15rem;
+            }
+
+            .habit-loop .loop-items {
+                flex-direction: column;
+            }
+
+            .habit-loop .arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-name">Olgu Menevşe</span>
+                <span class="logo-title">Spor Psikoloğu</span>
+            </div>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="index.html#anasayfa">Anasayfa</a></li>
+                    <li><a href="index.html#hakkimda">Hakkımda</a></li>
+                    <li><a href="index.html#sertifikalar">Sertifikalar</a></li>
+                    <li><a href="articles.html">Blog</a></li>
+                    <li><a href="index.html#iletisim">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <article class="article-detail">
+        <div class="article-detail-header">
+            <a href="articles.html" class="back-link">← Tüm Yazılara Dön</a>
+            <span class="article-detail-category">PSİKOLOJİ</span>
+            <h1>Alışkanlıkların Psikolojisi & Mikro Alışkanlıkların Gücü</h1>
+            <div class="article-meta-detail">
+                <span>📖 11 dakika okuma</span>
+                <span>📅 3 Ocak 2025</span>
+            </div>
+        </div>
+
+        <div class="article-content">
+            <p>
+                Beynimiz alışkanlıkları küçük ödüller ve tekrarlarla inşa eder. Mikro alışkanlıklarla başlamak, büyük hedeflere ulaşmanın en güvenilir yoludur.
+            </p>
+
+            <section class="article-section">
+                <h2>Alışkanlık Döngüsü: Tetik → Rutin → Ödül</h2>
+                <p>
+                    Her alışkanlık üç temel bileşenden oluşur: Tetikleyici (cue), yapılan davranış (routine) ve alınan ödül (reward). Bu döngüyü anlayarak yeni alışkanlıklar tasarlayabilir veya kötü alışkanlıkları değiştirebilirsin.
+                </p>
+
+                <div class="habit-loop">
+                    <h3>Alışkanlık Döngüsü</h3>
+                    <div class="loop-items">
+                        <div class="loop-item" style="border-left: 4px solid #3b82f6;">
+                            <h4>🎯 Tetik</h4>
+                            <p style="font-size: 1rem; margin: 0;">Davranışı başlatan işaret</p>
+                        </div>
+                        <span class="arrow">→</span>
+                        <div class="loop-item" style="border-left: 4px solid #8b7355;">
+                            <h4>🔄 Rutin</h4>
+                            <p style="font-size: 1rem; margin: 0;">Yapılan davranış</p>
+                        </div>
+                        <span class="arrow">→</span>
+                        <div class="loop-item" style="border-left: 4px solid #10b981;">
+                            <h4>🎁 Ödül</h4>
+                            <p style="font-size: 1rem; margin: 0;">Alınan tatmin</p>
+                        </div>
+                    </div>
+                    <p style="font-size: 1rem; color: var(--color-text-secondary); font-style: italic;">
+                        Örnek: Telefonunu görmen (tetik) → sosyal medya kontrolü (rutin) → dopamin salınımı (ödül)
+                    </p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>2 Dakika Kuralı ve Mikro Alışkanlıklar</h2>
+                <p>
+                    Yeni bir alışkanlık <strong>2 dakikadan az</strong> sürmeli. 'Her gün 50 sayfa kitap okuyacağım' yerine 'her gün 1 sayfa okuyacağım' daha etkili. Mikro başarılar büyük değişimlerin temelini oluşturur.
+                </p>
+                <div class="highlight-box">
+                    <p>
+                        🎓 <strong>Stanford Üniversitesi araştırması:</strong> Mikro alışkanlıklar %90 başarı oranına sahip
+                    </p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Yaygın Hatalar ve Çözümleri</h2>
+
+                <div class="mistake-card">
+                    <p class="mistake">❌ Çok büyük başlamak</p>
+                    <p class="solution">✅ Her gün 1 sayfa okumakla başla, 1 saat değil</p>
+                </div>
+
+                <div class="mistake-card">
+                    <p class="mistake">❌ Mükemmeliyetçilik</p>
+                    <p class="solution">✅ %80 tutarlılık %100'den daha değerli</p>
+                </div>
+
+                <div class="mistake-card">
+                    <p class="mistake">❌ Çok fazla alışkanlık birden</p>
+                    <p class="solution">✅ Aynı anda maksimum 2-3 alışkanlık</p>
+                </div>
+
+                <div class="mistake-card">
+                    <p class="mistake">❌ Tetikleyici belirlememe</p>
+                    <p class="solution">✅ Her alışkanlık için net tetik noktası seç</p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Psikoloji Araştırmaları</h2>
+
+                <div class="research-card">
+                    <span class="badge" style="background: rgba(168, 85, 247, 0.1); color: rgb(168, 85, 247);">DAVRANIŞSAL PSİKOLOJİ</span>
+                    <span class="percentage" style="color: rgb(168, 85, 247);">%90</span>
+                    <h4>Dr. BJ Fogg - Stanford Üniversitesi</h4>
+                    <p class="finding">Mikro alışkanlıklar büyük alışkanlıklardan 3 kat daha başarılı</p>
+                </div>
+
+                <div class="research-card">
+                    <span class="badge" style="background: rgba(59, 130, 246, 0.1); color: rgb(59, 130, 246);">NÖROPLASTİSİTE</span>
+                    <span class="percentage" style="color: rgb(59, 130, 246);">66</span>
+                    <h4>Dr. Phillippa Lally - King's College London</h4>
+                    <p class="finding">Alışkanlık oluşumu ortalama 66 gün sürüyor (18-254 gün arasında)</p>
+                </div>
+
+                <div class="research-card">
+                    <span class="badge" style="background: rgba(249, 115, 22, 0.1); color: rgb(249, 115, 22);">NÖROBİLİM</span>
+                    <span class="percentage" style="color: rgb(249, 115, 22);">%45</span>
+                    <h4>Dr. Charles Duhigg - MIT Araştırması</h4>
+                    <p class="finding">Alışkanlık döngüsü (tetik-rutin-ödül) beynin bazal ganglionlarında kodlanır</p>
+                </div>
+
+                <div class="research-card">
+                    <span class="badge" style="background: rgba(34, 197, 94, 0.1); color: rgb(34, 197, 94);">DAVRANIŞSAL DEĞİŞİM</span>
+                    <span class="percentage" style="color: rgb(34, 197, 94);">%37</span>
+                    <h4>Dr. James Clear - Atomik Alışkanlıklar</h4>
+                    <p class="finding">%1'lik günlük gelişim yılda %37 büyüme sağlar</p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Pratik Uygulamalar</h2>
+                <h3>Mikro Alışkanlık Başlangıç Rehberi</h3>
+
+                <ul class="tips-list">
+                    <li>⏱️ 2 dakika kuralı ile başlayın - sadece 2 dakikalık alışkanlıklar ekleyin</li>
+                    <li>🎯 Tetik-rutin-ödül döngüsünü kurarken tetikleyicilerinizi belirleyin</li>
+                    <li>🎯 İlk hafta sadece 1 alışkanlık ekleyin ve tutarlılığa odaklanın</li>
+                    <li>📸 Fotoğraf doğrulama özelliğini kullanarak ödül sistemini güçlendirin</li>
+                </ul>
+
+                <h3>Başlangıç Örnekleri</h3>
+                <ul class="tips-list">
+                    <li>🏃‍♂️ 'Spor kıyafetlerimi giyerim' (2 dk)</li>
+                    <li>📚 '1 sayfa kitap okurum' (2 dk)</li>
+                    <li>🧘‍♀️ '3 derin nefes alırım' (1 dk)</li>
+                </ul>
+            </section>
+
+            <div class="highlight-box">
+                <p>
+                    <strong>Sonuç:</strong> Büyük hedefler küçük adımlarla başlar. Mikro alışkanlıklar, beynin doğal öğrenme mekanizmasıyla uyumludur ve sürdürülebilir değişimin anahtarıdır. Mükemmeli değil, tutarlılığı hedefleyin.
+                </p>
+            </div>
+        </div>
+    </article>
+
+    <footer id="iletisim" style="margin-top: 5rem;">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h4>Uzm. Psk. Olgu Menevşe</h4>
+                <p>Spor Psikoloğu</p>
+            </div>
+            <div class="footer-services">
+                <p>Bireysel ve Takım Danışmanlığı</p>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2025 Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

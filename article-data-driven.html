@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantified Self: Kendini Verilerle Tanı - Olgu Menevşe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Text:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .article-detail {
+            padding-top: 150px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+
+        .article-detail-header {
+            margin-bottom: 4rem;
+        }
+
+        .article-detail-category {
+            font-size: 0.85rem;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-detail h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--color-text-primary);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .article-meta-detail {
+            display: flex;
+            gap: 2rem;
+            color: var(--color-text-tertiary);
+            font-size: 0.9rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--color-border-light);
+        }
+
+        .article-content {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.25rem;
+            color: var(--color-text-secondary);
+            line-height: 1.9;
+        }
+
+        .article-content p {
+            margin-bottom: 2rem;
+        }
+
+        .article-content strong {
+            color: var(--color-text-primary);
+            font-weight: 600;
+        }
+
+        .article-section {
+            margin: 0;
+            padding: 0;
+        }
+
+        .article-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--color-text-primary);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .article-section h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            color: var(--color-text-primary);
+            margin: 2.5rem 0 1rem;
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: var(--color-accent-subtle);
+            border-left: 3px solid var(--color-accent);
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            color: var(--color-text-primary);
+            font-weight: 500;
+        }
+
+        .chart-container {
+            margin: 3rem 0;
+            padding: 2.5rem;
+            background: var(--color-background-alt);
+            border-radius: 12px;
+        }
+
+        .chart-container h3 {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .tracking-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .tracking-card {
+            background: var(--color-background-alt);
+            padding: 1.8rem;
+            border-radius: 12px;
+            border-top: 4px solid var(--color-accent);
+        }
+
+        .tracking-card h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            color: var(--color-text-primary);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .tracking-card .priority {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            background: var(--color-accent-subtle);
+            color: var(--color-accent);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .tracking-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .tracking-card li {
+            font-size: 1rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 0.5rem;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .tracking-card li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+        }
+
+        .method-card {
+            background: var(--color-background-light);
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+
+        .method-card h4 {
+            color: var(--color-text-primary);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .method-card .pros-cons {
+            margin: 1rem 0;
+        }
+
+        .method-card .pros-cons p {
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .insight-card {
+            background: var(--color-background-alt);
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+            border-left: 4px solid var(--color-accent);
+        }
+
+        .insight-card .tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            background: var(--color-accent-subtle);
+            color: var(--color-accent);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .insight-card h4 {
+            font-size: 1.2rem;
+            color: var(--color-text-primary);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        @media screen and (max-width: 768px) {
+            .article-detail {
+                padding-top: 180px;
+            }
+
+            .article-detail h1 {
+                font-size: 2.5rem;
+            }
+
+            .article-content {
+                font-size: 1.15rem;
+            }
+
+            .tracking-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-name">Olgu Menevşe</span>
+                <span class="logo-title">Spor Psikoloğu</span>
+            </div>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="index.html#anasayfa">Anasayfa</a></li>
+                    <li><a href="index.html#hakkimda">Hakkımda</a></li>
+                    <li><a href="index.html#sertifikalar">Sertifikalar</a></li>
+                    <li><a href="articles.html">Blog</a></li>
+                    <li><a href="index.html#iletisim">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <article class="article-detail">
+        <div class="article-detail-header">
+            <a href="articles.html" class="back-link">← Tüm Yazılara Dön</a>
+            <span class="article-detail-category">VERİ & ANALİZ</span>
+            <h1>Quantified Self: Kendini Verilerle Tanı</h1>
+            <div class="article-meta-detail">
+                <span>📖 10 dakika okuma</span>
+                <span>📅 15 Ocak 2025</span>
+            </div>
+        </div>
+
+        <div class="article-content">
+            <p>
+                İlerlemeni kayıt altına almak motivasyonu artırır. Verilerine bakarak hangi alışkanlıkların hayatına gerçekten etki ettiğini anlayabilirsin.
+            </p>
+
+            <div class="highlight-box">
+                <p>
+                    💡 <strong>Stanford araştırması:</strong> Self-tracking yapanlar hedeflerine %71 daha fazla ulaşır
+                </p>
+            </div>
+
+            <section class="article-section">
+                <h2>📊 Quantified Self: Kendini Verilerle Tanı</h2>
+                <p>
+                    Veri toplama sadece teknoloji şirketleri için değil. Kendi davranışlarını ölçmek, gizli kalıpları ortaya çıkarır ve bilinçsiz alışkanlıkları görünür kılar.
+                </p>
+            </section>
+
+            <section class="article-section">
+                <h2>🎯 Ölçülen Şey Gelişir (Hawthorne Etkisi)</h2>
+                <p>
+                    Sadece bir davranışı ölçmeye başlamak bile onu iyileştirir. Bu psikolojik fenomen, veri toplamayı güçlü bir değişim aracı yapar.
+                </p>
+                <div class="highlight-box">
+                    <p>
+                        🚶 <strong>Araştırma:</strong> Adım sayacı kullanananlar günde %12 daha fazla yürür
+                    </p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Tracking'in Alışkanlıklara Etkisi</h2>
+                <p>
+                    6 ay süreyle takip edilen kullanıcıların alışkanlık iyileştirme oranları:
+                </p>
+
+                <div class="chart-container">
+                    <h3>Tracking Öncesi vs Sonrası</h3>
+                    <canvas id="trackingChart"></canvas>
+                    <p style="margin-top: 1.5rem; font-size: 1.1rem;">
+                        <strong>Ortalama İyileştirme: %155</strong>
+                    </p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Neyi Takip Etmelisin?</h2>
+                <p>
+                    Tüm metrikleri takip etmeye çalışma. En etkili olanları seç:
+                </p>
+
+                <div class="tracking-grid">
+                    <div class="tracking-card">
+                        <span class="priority">YÃœKSEK ÖNCELİK</span>
+                        <h4>❤️ Sağlık</h4>
+                        <ul>
+                            <li>Uyku kalitesi</li>
+                            <li>Adım sayısı</li>
+                            <li>Kalp atışı</li>
+                            <li>Kilo</li>
+                        </ul>
+                    </div>
+
+                    <div class="tracking-card">
+                        <span class="priority">YÃœKSEK ÖNCELİK</span>
+                        <h4>🧠 Zihinsel</h4>
+                        <ul>
+                            <li>Ruh hali</li>
+                            <li>Stres seviyesi</li>
+                            <li>Odaklanma</li>
+                            <li>Enerji</li>
+                        </ul>
+                    </div>
+
+                    <div class="tracking-card">
+                        <span class="priority">ORTA ÖNCELİK</span>
+                        <h4>📊 Produktivite</h4>
+                        <ul>
+                            <li>Çalışma saati</li>
+                            <li>Hedef tamamlama</li>
+                            <li>Dikkat dağılması</li>
+                        </ul>
+                    </div>
+
+                    <div class="tracking-card">
+                        <span class="priority">ORTA ÖNCELİK</span>
+                        <h4>👥 Sosyal</h4>
+                        <ul>
+                            <li>Arkadaş görüşme</li>
+                            <li>Aile zamanı</li>
+                            <li>Yalnızlık hissi</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Takip Yöntemleri</h2>
+                <p>
+                    Farklı tracking yöntemleri ve hangilerinin ne zaman kullanılacağı:
+                </p>
+
+                <div class="method-card">
+                    <h4>✏️ Manuel Kayıt</h4>
+                    <p><strong>Nedir:</strong> Kağıt/dijital not alma</p>
+                    <div class="pros-cons">
+                        <p>✅ Bilinçli, esnek, özelleştirilebilir</p>
+                        <p>❌ Unutma riski, zaman alıcı</p>
+                        <p>🎯 <strong>En iyi:</strong> Ruh hali, kalite metrikleri</p>
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <h4>📱 Akıllı Telefon Apps</h4>
+                    <p><strong>Nedir:</strong> Özel uygulamalar</p>
+                    <div class="pros-cons">
+                        <p>✅ Hatırlatma, görselleştirme, analiz</p>
+                        <p>❌ Ekran bağımlılığı, dikkat dağılması</p>
+                        <p>🎯 <strong>En iyi:</strong> Genel alışkanlıklar, hedefler</p>
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <h4>⌚ Wearable Devices</h4>
+                    <p><strong>Nedir:</strong> Akıllı saat, fitness tracker</p>
+                    <div class="pros-cons">
+                        <p>✅ Otomatik, sürekli, hassas</p>
+                        <p>❌ Pahalı, batarya, veri overload</p>
+                        <p>🎯 <strong>En iyi:</strong> Fiziksel aktivite, uyku</p>
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <h4>📸 Fotoğraf Kayıtları</h4>
+                    <p><strong>Nedir:</strong> Görsel tracking</p>
+                    <div class="pros-cons">
+                        <p>✅ Detaylı, nostaljik, motivasyonel</p>
+                        <p>❌ Depolama, organize etme zorluğu</p>
+                        <p>🎯 <strong>En iyi:</strong> İlerleme fotoğrafları, yemekler</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Verilerini Nasıl Analiz Etmelisin?</h2>
+                <p>
+                    Ham veri anlamsızdır. Önemli olan kalıpları ve korelasyonları bulmak:
+                </p>
+
+                <div class="insight-card">
+                    <h4>1️⃣ Haftalık Review</h4>
+                    <p>Her hafta sonu verilerini gözden geçir</p>
+                    <p><strong>Sorular:</strong> Hangi gün en iyiydin? Neyin trigger oldu? Kalıp var mı?</p>
+                </div>
+
+                <div class="insight-card">
+                    <h4>2️⃣ Korelasyon Ara</h4>
+                    <p>İki metrik arasında bağlantı bul</p>
+                    <p><strong>Sorular:</strong> Uyku vs enerji? Egzersiz vs ruh hali? Beslenme vs odaklanma?</p>
+                </div>
+
+                <div class="insight-card">
+                    <h4>3️⃣ Trend Analizi</h4>
+                    <p>Uzun vadeli değişimleri gözlemle</p>
+                    <p><strong>Sorular:</strong> Son 3 ayda gelişim var mı? Mevsimsel değişim? Yaşam değişiklikleri etkisi?</p>
+                </div>
+
+                <div class="insight-card">
+                    <h4>4️⃣ A/B Test Yap</h4>
+                    <p>Farklı yaklaşımları karşılaştır</p>
+                    <p><strong>Sorular:</strong> X alışkanlığı Y'den iyi mi? Hangi zaman daha etkili? Çevre değişikliği fark eder mi?</p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Kişisel İçgörüler Örnekleri</h2>
+                <p>
+                    Gerçek kullanıcıların kendi verilerinden çıkardığı şaşırtıcı sonuçlar:
+                </p>
+
+                <div class="method-card">
+                    <span class="tag">Beslenme-Uyku</span>
+                    <h4>☕ Kahve zamanlaması = Uyku kalitesi</h4>
+                    <p>📊 <strong>Bulgu:</strong> 14:00'dan sonra kahve içtiğim günler uyku kalitem %30 düşüyor</p>
+                    <p>🎯 <strong>Aksiyon:</strong> Öğleden sonra çay'a geçtim</p>
+                    <p>✅ <strong>Sonuç:</strong> Uyku skorum 6.2'den 8.1'e çıktı</p>
+                </div>
+
+                <div class="method-card">
+                    <span class="tag">Dijital-Produktivite</span>
+                    <h4>📱 Sosyal medya = Prokrastinasyon</h4>
+                    <p>📊 <strong>Bulgu:</strong> Sabah telefonu kontrol edersem günün %40'ını boşa geçiriyorum</p>
+                    <p>🎯 <strong>Aksiyon:</strong> Telefonu başka odada bırakıyorum</p>
+                    <p>✅ <strong>Sonuç:</strong> Odaklanma süresi 2x arttı</p>
+                </div>
+
+                <div class="method-card">
+                    <span class="tag">Çevre-Mental</span>
+                    <h4>🌧️ Hava durumu = Ruh halim</h4>
+                    <p>📊 <strong>Bulgu:</strong> Yağmurlu günlerde motivasyonum %50 azalıyor</p>
+                    <p>🎯 <strong>Aksiyon:</strong> Light therapy + D vitamini</p>
+                    <p>✅ <strong>Sonuç:</strong> Hava şartlarından bağımsız enerji</p>
+                </div>
+            </section>
+
+            <div class="highlight-box">
+                <p>
+                    <strong>Sonuç:</strong> Kendi verilerinizi toplamak ve analiz etmek, size özel içgörüler kazandırır. Ölçülen şey gelişir - bu basit prensip, yaşam kalitenizi dönüştürebilir.
+                </p>
+            </div>
+        </div>
+    </article>
+
+    <footer id="iletisim" style="margin-top: 5rem;">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h4>Uzm. Psk. Olgu Menevşe</h4>
+                <p>Spor Psikoloğu</p>
+            </div>
+            <div class="footer-services">
+                <p>Bireysel ve Takım Danışmanlığı</p>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2025 Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tracking Impact Chart
+        const ctx = document.getElementById('trackingChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Uyku', 'Egzersiz', 'Su İçme', 'Meditasyon', 'Okuma'],
+                datasets: [
+                    {
+                        label: 'Tracking Öncesi',
+                        data: [6.2, 2.1, 1.2, 0.5, 0.3],
+                        backgroundColor: 'rgba(150, 150, 150, 0.4)',
+                        borderColor: 'rgba(150, 150, 150, 1)',
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'Tracking Sonrası',
+                        data: [7.8, 4.5, 2.8, 1.5, 0.9],
+                        backgroundColor: 'rgba(139, 115, 85, 0.8)',
+                        borderColor: 'rgba(139, 115, 85, 1)',
+                        borderWidth: 2
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Günlük Süre/Miktar',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Metrik',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

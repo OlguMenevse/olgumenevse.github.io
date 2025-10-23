@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yazılarım - Uzm. Psk. Olgu Menevşe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Text:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .articles-page {
+            padding-top: 150px;
+            min-height: 100vh;
+        }
+
+        .articles-header {
+            text-align: center;
+            margin-bottom: 6rem;
+            padding: 0 5%;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--color-accent);
+            transform: translateX(-5px);
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5% 5rem;
+        }
+
+        .article-card {
+            background: var(--color-background);
+            border: 1px solid var(--color-border-light);
+            padding: 3rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .article-card:hover {
+            box-shadow: 0 15px 40px var(--color-shadow);
+            transform: translateY(-8px);
+            border-color: var(--color-border);
+        }
+
+        .article-card .article-category {
+            font-size: 0.75rem;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--color-text-primary);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .article-card .article-excerpt {
+            font-size: 1rem;
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-card .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--color-border-light);
+            font-size: 0.85rem;
+            color: var(--color-text-tertiary);
+        }
+
+        .article-card .read-time {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 1024px) {
+            .articles-grid {
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+                gap: 2.5rem;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .articles-page {
+                padding-top: 180px;
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .article-card {
+                padding: 2rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .article-card h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-name">Olgu Menevşe</span>
+                <span class="logo-title">Spor Psikoloğu</span>
+            </div>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="index.html#anasayfa">Anasayfa</a></li>
+                    <li><a href="index.html#hakkimda">Hakkımda</a></li>
+                    <li><a href="index.html#sertifikalar">Sertifikalar</a></li>
+                    <li><a href="articles.html">Blog</a></li>
+                    <li><a href="index.html#iletisim">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="articles-page">
+        <div class="articles-header">
+            <a href="index.html#yazilar" class="back-link">← Ana Sayfaya Dön</a>
+            <span class="section-label">YAZILARIM</span>
+            <h2>Tüm Blog Yazılarım</h2>
+        </div>
+
+        <div class="articles-grid">
+            <!-- Article 1: Chronobiology -->
+            <article class="article-card" onclick="window.location.href='article-chronobiology.html'">
+                <span class="article-category">KRONOBİYOLOJİ</span>
+                <h3>Sirkadyen Ritim: Vücudun İç Saati</h3>
+                <p class="article-excerpt">
+                    Vücudumuzun 24 saatlik iç saati hormon salınımından vücut sıcaklığına kadar her şeyi düzenler. Bu ritmi anlamak, alışkanlıklarımızı en verimli saatlerde uygulamamızı sağlar...
+                </p>
+                <div class="article-meta">
+                    <span class="read-time">📖 12 dakika okuma</span>
+                    <span class="article-date">20 Ocak 2025</span>
+                </div>
+            </article>
+
+            <!-- Article 2: Culture -->
+            <article class="article-card" onclick="window.location.href='article-culture.html'">
+                <span class="article-category">KÜLTÜR & YAŞAM</span>
+                <h3>Mavi Bölgeler: Uzun Yaşamın Sırları</h3>
+                <p class="article-excerpt">
+                    Dünyanın farklı kültürleri sağlıklı yaşamı destekleyen küçük ritüeller geliştirmiştir. Japonların 'Hara Hachi Bu' geleneği ya da İskandinavların doğa ile bağ kurma alışkanlıkları...
+                </p>
+                <div class="article-meta">
+                    <span class="read-time">📖 15 dakika okuma</span>
+                    <span class="article-date">18 Ocak 2025</span>
+                </div>
+            </article>
+
+            <!-- Article 3: Data-Driven -->
+            <article class="article-card" onclick="window.location.href='article-data-driven.html'">
+                <span class="article-category">VERİ & ANALİZ</span>
+                <h3>Quantified Self: Kendini Verilerle Tanı</h3>
+                <p class="article-excerpt">
+                    İlerlemeni kayıt altına almak motivasyonu artırır. Verilerine bakarak hangi alışkanlıkların hayatına gerçekten etki ettiğini anlayabilirsin. Ölçülen şey gelişir...
+                </p>
+                <div class="article-meta">
+                    <span class="read-time">📖 10 dakika okuma</span>
+                    <span class="article-date">15 Ocak 2025</span>
+                </div>
+            </article>
+
+            <!-- Article 4: Digital Hygiene -->
+            <article class="article-card" onclick="window.location.href='article-digital-hygiene.html'">
+                <span class="article-category">DİJİTAL SAĞLIK</span>
+                <h3>Dijital Hijyen: Ekran Kullanımını Dengele</h3>
+                <p class="article-excerpt">
+                    Dijital cihazlarla geçirilen yoğun zaman, dikkat, uyku kalitesi ve sosyal ilişkiler üzerinde etkili olabilir. Ortalama bir kişi günde 205 kez telefonunu kontrol ediyor...
+                </p>
+                <div class="article-meta">
+                    <span class="read-time">📖 14 dakika okuma</span>
+                    <span class="article-date">12 Ocak 2025</span>
+                </div>
+            </article>
+
+            <article class="article-card" onclick="window.location.href='article-dopamine.html'">
+                <span class="article-category">NÖROBİLİM</span>
+                <h3>Dopamin: Motivasyonun Kimyası</h3>
+                <p class="article-excerpt">
+                    Beynin ödül mekanizması küçük başarılarla aktive olur. Dopamin 'mutluluk hormonu' değil, 'isteme hormonu'dur. Küçük ödüller büyük ödüllerden %40 daha etkili...
+                </p>
+                <div class="article-meta">
+                    <span class="read-time">📖 13 dakika okuma</span>
+                    <span class="article-date">10 Ocak 2025</span>
+                </div>
+            </article>
+
+            <article class="article-card" onclick="window.location.href='article-money-management.html'">
+                <span class="article-category">FİNANSAL PSİKOLOJİ</span>
+                <h3>Para Yönetimi: Finansal Psikoloji</h3>
+                <p class="article-excerpt">
+                    Harcama kararlarımız bilinçdışı kalıplardan etkilenebilir. Richard Thaler'in mental accounting teorisi ve aylık bütçe sisteminin temelleri...
+                </p>
+                <div class="article-meta">
+                    <span class="read-time">📖 16 dakika okuma</span>
+                    <span class="article-date">8 Ocak 2025</span>
+                </div>
+            </article>
+
+            <article class="article-card" onclick="window.location.href='article-nutrition.html'">
+                <span class="article-category">BESLENME & MİKROBİYOM</span>
+                <h3>Bağırsak Sağlığı: İkinci Beyin</h3>
+                <p class="article-excerpt">
+                    500 milyon nöron bağırsaklarımızda! Fermente gıdalar, mikrobiyom çeşitliliği ve bağırsak-beyin bağlantısının sırları...
+                </p>
+                <div class="article-meta">
+                    <span class="read-time">📖 12 dakika okuma</span>
+                    <span class="article-date">5 Ocak 2025</span>
+                </div>
+            </article>
+
+            <article class="article-card" onclick="window.location.href='article-psychology.html'">
+                <span class="article-category">PSİKOLOJİ</span>
+                <h3>Alışkanlıkların Psikolojisi & Mikro Alışkanlıklar</h3>
+                <p class="article-excerpt">
+                    Tetik-rutin-ödül döngüsü, 2 dakika kuralı ve %1'lik günlük gelişimin gücü. Mikro alışkanlıklar %90 başarı oranına sahip...
+                </p>
+                <div class="article-meta">
+                    <span class="read-time">📖 11 dakika okuma</span>
+                    <span class="article-date">3 Ocak 2025</span>
+                </div>
+            </article>
+
+            <article class="article-card" onclick="window.location.href='article-stress.html'">
+                <span class="article-category">STRES BİLİMİ</span>
+                <h3>Stres: Vücut ve Zihin Üzerindeki Etkileri</h3>
+                <p class="article-excerpt">
+                    HPA ekseni, savaş-ya-da-kaç yanıtı ve kronik stresin sistemik etkileri. Harvard ve APA araştırmaları ışığında stres yönetimi...
+                </p>
+                <div class="article-meta">
+                    <span class="read-time">📖 14 dakika okuma</span>
+                    <span class="article-date">1 Ocak 2025</span>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer id="iletisim">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h4>Uzm. Psk. Olgu Menevşe</h4>
+                <p>Spor Psikoloğu</p>
+            </div>
+            <div class="footer-services">
+                <p>Bireysel ve Takım Danışmanlığı</p>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2025 Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

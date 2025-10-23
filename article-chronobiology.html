@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sirkadyen Ritim: Vücudun İç Saati - Olgu Menevşe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Text:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .article-detail {
+            padding-top: 150px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+
+        .article-detail-header {
+            margin-bottom: 4rem;
+        }
+
+        .article-detail-category {
+            font-size: 0.85rem;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-detail h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--color-text-primary);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .article-meta-detail {
+            display: flex;
+            gap: 2rem;
+            color: var(--color-text-tertiary);
+            font-size: 0.9rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--color-border-light);
+        }
+
+        .article-content {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.25rem;
+            color: var(--color-text-secondary);
+            line-height: 1.9;
+        }
+
+        .article-content p {
+            margin-bottom: 2rem;
+        }
+
+        .article-content strong {
+            color: var(--color-text-primary);
+            font-weight: 600;
+        }
+
+        .article-section {
+            margin: 0;
+            padding: 0;
+        }
+
+        .article-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--color-text-primary);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .article-section h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            color: var(--color-text-primary);
+            margin: 2.5rem 0 1rem;
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: var(--color-accent-subtle);
+            border-left: 3px solid var(--color-accent);
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            color: var(--color-text-primary);
+            font-weight: 500;
+        }
+
+        .chart-container {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--color-background-alt);
+            border-radius: 12px;
+        }
+
+        .timing-card {
+            background: var(--color-background-alt);
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+            border-left: 4px solid var(--color-accent);
+        }
+
+        .timing-card h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            color: var(--color-text-primary);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .timing-card .time {
+            color: var(--color-accent);
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .research-card {
+            background: var(--color-background-light);
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+
+        .research-card h4 {
+            color: var(--color-accent);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .research-card p {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .tips-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .tips-list li {
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            background: var(--color-background-alt);
+            border-left: 3px solid var(--color-accent);
+            border-radius: 0 8px 8px 0;
+        }
+
+        @media screen and (max-width: 768px) {
+            .article-detail {
+                padding-top: 180px;
+            }
+
+            .article-detail h1 {
+                font-size: 2.5rem;
+            }
+
+            .article-content {
+                font-size: 1.15rem;
+            }
+
+            .article-section h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-name">Olgu Menevşe</span>
+                <span class="logo-title">Spor Psikoloğu</span>
+            </div>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="index.html#anasayfa">Anasayfa</a></li>
+                    <li><a href="index.html#hakkimda">Hakkımda</a></li>
+                    <li><a href="index.html#sertifikalar">Sertifikalar</a></li>
+                    <li><a href="articles.html">Blog</a></li>
+                    <li><a href="index.html#iletisim">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <article class="article-detail">
+        <div class="article-detail-header">
+            <a href="articles.html" class="back-link">← Tüm Yazılara Dön</a>
+            <span class="article-detail-category">KRONOBİYOLOJİ</span>
+            <h1>Sirkadyen Ritim: Vücudun İç Saati</h1>
+            <div class="article-meta-detail">
+                <span>📖 12 dakika okuma</span>
+                <span>📅 20 Ocak 2025</span>
+            </div>
+        </div>
+
+        <div class="article-content">
+            <p>
+                Vücudumuzun 24 saatlik iç saati (sirkadyen ritim) hormon salınımından vücut sıcaklığına kadar her şeyi düzenler. Bu ritmi anlamak, alışkanlıklarımızı en verimli saatlerde uygulamamızı sağlar.
+            </p>
+
+            <div class="highlight-box">
+                <p>
+                    💡 <strong>Anahtar Bulgu:</strong> Cortisol sabah 8'de, melatonin gece 10'da peak yapar - bu doğal ritme uyum sağlamak alışkanlık başarısını %60 artırır.
+                </p>
+            </div>
+
+            <section class="article-section">
+                <h2>Sirkadyen Ritim: Vücudun İç Saati</h2>
+                <p>
+                    Ana saat merkezi beynin hipotalamus bölgesindeki SCN (suprakiazmatik çekirdek) tarafından kontrol edilir. Işık, yemek zamanları ve sosyal etkinlikler bu saati senkronize eder.
+                </p>
+                <p>
+                    <strong>MIT araştırması:</strong> Doğru zamanlama alışkanlık oluşumunu %45 hızlandırır.
+                </p>
+            </section>
+
+            <section class="article-section">
+                <h2>Alışkanlıklar için Optimal Zamanlar</h2>
+                <p>
+                    Kronobiyoloji araştırmaları farklı aktiviteler için en uygun zamanları belirlemiştir. Bu zamanları takip etmek performansı önemli ölçüde artırır.
+                </p>
+
+                <div class="timing-card">
+                    <h4>☀️ Sabah Rutin</h4>
+                    <span class="time">06:00 - 09:00</span>
+                    <p>Kortizol seviyesi yüksek, enerji maksimum</p>
+                    <p><strong>En İyi:</strong> Egzersiz, planlama, önemli kararlar</p>
+                </div>
+
+                <div class="timing-card">
+                    <h4>🧠 Yaratıcı Çalışma</h4>
+                    <span class="time">09:00 - 11:00</span>
+                    <p>Beyin dalgaları optimal, odaklanma yüksek</p>
+                    <p><strong>En İyi:</strong> Yazma, problem çözme, öğrenme</p>
+                </div>
+
+                <div class="timing-card">
+                    <h4>🏃 Fiziksel Aktivite</h4>
+                    <span class="time">15:00 - 18:00</span>
+                    <p>Vücut sıcaklığı en yüksek, performans peak</p>
+                    <p><strong>En İyi:</strong> Spor, egzersiz, fiziksel alışkanlıklar</p>
+                </div>
+
+                <div class="timing-card">
+                    <h4>🌙 Gevşeme & Refleksiyon</h4>
+                    <span class="time">20:00 - 22:00</span>
+                    <p>Melatonin artışı, zihin sakinleşme</p>
+                    <p><strong>En İyi:</strong> Meditasyon, okuma, planlama</p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Kronobiyoloji Araştırmaları</h2>
+
+                <div class="research-card">
+                    <h4>Nobel Ödülü 2017 - Hall, Rosbash, Young</h4>
+                    <p>Moleküler saat genlerinin keşfi sirkadyen ritim anlayışında devrim yarattı.</p>
+                    <p><strong>Kategori:</strong> Moleküler Kronobiyoloji</p>
+                </div>
+
+                <div class="research-card">
+                    <h4>Harvard Medical School - Light Therapy Study</h4>
+                    <p>Sabah 10.000 lux ışık maruziyeti jet lag'ı %70 azaltır.</p>
+                    <p><strong>Kategori:</strong> Işık Terapisi</p>
+                </div>
+
+                <div class="research-card">
+                    <h4>University of Surrey - Exercise Timing</h4>
+                    <p>Sabah egzersizi akşam egzersizinden %23 daha fazla sonuç verir.</p>
+                    <p><strong>Kategori:</strong> Egzersiz Zamanlaması</p>
+                </div>
+
+                <div class="research-card">
+                    <h4>Max Planck Institute - Dr. Till Roenneberg</h4>
+                    <p>Sosyal jetlag (hafta içi-hafta sonu farkı) obezite riskini %33 artırır.</p>
+                    <p><strong>Kategori:</strong> Sosyal Kronobiyoloji</p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Alışkanlıklarınızı Optimize Edin</h2>
+                <h3>Pratik Uygulamalar</h3>
+
+                <ul class="tips-list">
+                    <li>☀️ Sabah alışkanlıklarını güneş doğumuna yakın saatlerde planlayın</li>
+                    <li>🌙 Akşam ekran kullanımını azaltma alışkanlığı oluşturun (21:00 sonrası)</li>
+                    <li>🚶 Öğle arası kısa yürüyüş alışkanlığı ekleyin (14:00-15:00)</li>
+                    <li>😴 Uyku düzeninizi takip ederek tutarlı uyku saatleri belirleyin</li>
+                </ul>
+
+                <h3>Örnek Alışkanlıklar</h3>
+                <ul class="tips-list">
+                    <li>☀️ 'Sabah 7:00 güneş ışığı alırım'</li>
+                    <li>💤 'Gece 22:30 telefonu kapatırım'</li>
+                    <li>🚶‍♂️ 'Öğle 14:00 10 dk yürürüm'</li>
+                    <li>📱 'Akşam 21:00 ekran detoksu'</li>
+                </ul>
+            </section>
+
+            <div class="highlight-box">
+                <p>
+                    <strong>Sonuç:</strong> Vücudunuzun doğal ritmine uygun alışkanlıklar geliştirerek, daha az çaba ile daha fazla sonuç elde edebilirsiniz. Kronobiyoloji bilimi, performansınızı optimize etmenin en bilimsel yoludur.
+                </p>
+            </div>
+        </div>
+    </article>
+
+    <footer id="iletisim" style="margin-top: 5rem;">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h4>Uzm. Psk. Olgu Menevşe</h4>
+                <p>Spor Psikoloğu</p>
+            </div>
+            <div class="footer-services">
+                <p>Bireysel ve Takım Danışmanlığı</p>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2025 Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

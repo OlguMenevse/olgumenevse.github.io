@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dijital Hijyen: Ekran Kullanımını Dengele - Olgu Menevşe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Text:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .article-detail {
+            padding-top: 150px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+
+        .article-detail-header {
+            margin-bottom: 4rem;
+        }
+
+        .article-detail-category {
+            font-size: 0.85rem;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-detail h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--color-text-primary);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .article-meta-detail {
+            display: flex;
+            gap: 2rem;
+            color: var(--color-text-tertiary);
+            font-size: 0.9rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--color-border-light);
+        }
+
+        .article-content {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.25rem;
+            color: var(--color-text-secondary);
+            line-height: 1.9;
+        }
+
+        .article-content p {
+            margin-bottom: 2rem;
+        }
+
+        .article-content strong {
+            color: var(--color-text-primary);
+            font-weight: 600;
+        }
+
+        .article-section {
+            margin: 0;
+            padding: 0;
+        }
+
+        .article-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--color-text-primary);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .article-section h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            color: var(--color-text-primary);
+            margin: 2.5rem 0 1rem;
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: var(--color-accent-subtle);
+            border-left: 3px solid var(--color-accent);
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0.8rem;
+            color: var(--color-text-primary);
+            font-weight: 500;
+        }
+
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .chart-container {
+            margin: 3rem 0;
+            padding: 2.5rem;
+            background: var(--color-background-alt);
+            border-radius: 12px;
+        }
+
+        .chart-container h3 {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .stats-box {
+            background: var(--color-background-light);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 12px;
+            border-left: 4px solid var(--color-accent);
+        }
+
+        .stats-box h4 {
+            color: var(--color-accent);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .stats-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .stats-box li {
+            font-size: 1.05rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--color-border-light);
+        }
+
+        .stats-box li:last-child {
+            border-bottom: none;
+        }
+
+        .habit-card {
+            background: var(--color-background-alt);
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+
+        .habit-card .emoji {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .habit-card h4 {
+            font-size: 1.2rem;
+            color: var(--color-text-primary);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .habit-card .type {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            background: var(--color-accent-subtle);
+            color: var(--color-accent);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .boundary-card {
+            background: var(--color-background-light);
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+            border-left: 4px solid var(--color-accent);
+        }
+
+        .boundary-card h4 {
+            font-size: 1.3rem;
+            color: var(--color-text-primary);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .notification-tier {
+            background: var(--color-background-alt);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 12px;
+            border-left: 4px solid var(--color-accent);
+        }
+
+        .notification-tier h4 {
+            color: var(--color-accent);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .notification-tier .count {
+            display: inline-block;
+            background: var(--color-accent-subtle);
+            color: var(--color-accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .quote-box {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--color-accent);
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--color-accent-subtle);
+            border-radius: 12px;
+        }
+
+        .quote-box .small {
+            font-size: 1.3rem;
+            display: block;
+            margin-top: 1rem;
+        }
+
+        @media screen and (max-width: 768px) {
+            .article-detail {
+                padding-top: 180px;
+            }
+
+            .article-detail h1 {
+                font-size: 2.5rem;
+            }
+
+            .article-content {
+                font-size: 1.15rem;
+            }
+
+            .quote-box {
+                font-size: 1.4rem;
+            }
+
+            .quote-box .small {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-name">Olgu Menevşe</span>
+                <span class="logo-title">Spor Psikoloğu</span>
+            </div>
+            <nav class="navigation">
+                <ul>
+                    <li><a href="index.html#anasayfa">Anasayfa</a></li>
+                    <li><a href="index.html#hakkimda">Hakkımda</a></li>
+                    <li><a href="index.html#sertifikalar">Sertifikalar</a></li>
+                    <li><a href="articles.html">Blog</a></li>
+                    <li><a href="index.html#iletisim">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <article class="article-detail">
+        <div class="article-detail-header">
+            <a href="articles.html" class="back-link">← Tüm Yazılara Dön</a>
+            <span class="article-detail-category">DİJİTAL SAĞLIK</span>
+            <h1>Dijital Hijyen: Ekran Kullanımını Dengele</h1>
+            <div class="article-meta-detail">
+                <span>📖 14 dakika okuma</span>
+                <span>📅 12 Ocak 2025</span>
+            </div>
+        </div>
+
+        <div class="article-content">
+            <p>
+                Dijital cihazlarla geçirilen yoğun zaman, dikkat, uyku kalitesi ve sosyal ilişkiler üzerinde etkili olabileceği düşünülen bir faktördür.
+            </p>
+
+            <section class="article-section">
+                <h2>Zihnin Pazaryeri</h2>
+                
+                <div class="quote-box">
+                    Pink!!
+                    <span class="small">* Telefonunu kontrol eder *</span>
+                </div>
+
+                <p>
+                    Sosyal medya platformları, kullanıcı etkileşimini artırmak amacıyla dikkat çekici içerik akışları ve bildirim sistemleri gibi psikolojik prensiplerden yararlanır. Sonsuz kaydırma, anlık bildirimler ve değişken ödül sistemleri beynimizi sürekli uyarılmış halde tutmak içindir.
+                </p>
+
+                <div class="highlight-box">
+                    <p>
+                        📱 Amerika'da yapılan bir araştırmaya göre, ortalama bir Amerikalı uyanık olduğu süre boyunca günde <strong>205 kez</strong>, yani yaklaşık her beş dakikada bir kez telefonunu kontrol ediyor.
+                    </p>
+                    <p>
+                        Bir önceki yıl bu sayı 144'tü. Bu da yalnızca bir yılda <strong>%43,2'lik bir artış</strong> anlamına geliyor.
+                    </p>
+                </div>
+
+                <div class="stats-box">
+                    <h4>Araştırmadan Öne Çıkan Bulgular:</h4>
+                    <ul>
+                        <li>İnsanlar günde ortalama <strong>205 kez</strong> telefonlarını kontrol ediyor</li>
+                        <li>Katılımcıların <strong>%80,6'sı</strong>, uyandıktan sonraki ilk 10 dakika içinde telefonuna bakıyor</li>
+                        <li><strong>%76'sı</strong>, bildirim geldikten sonraki beş dakika içinde telefonu kontrol ediyor</li>
+                        <li><strong>%65,7'si</strong>, tuvaletteyken telefonunu kullanıyor</li>
+                        <li><strong>%43,2'si</strong> kendisini "bağımlı" olarak tanımlıyor</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Aşırı Ekran Kullanımının Etkileri</h2>
+                <p>
+                    Günde 6+ saat ekran kullanımının yaşam kalitesi üzerindeki tahmini negatif etkileri:
+                </p>
+
+                <div class="chart-container">
+                    <h3>Ekran Süresinin Yaşam Kalitesine Etkisi (%)</h3>
+                    <canvas id="screenImpactChart"></canvas>
+                    <p style="margin-top: 1.5rem; font-size: 1rem; color: #f59e0b;">
+                        ⚠️ <strong>Not:</strong> Bu veriler ekran süresine değil, kullanım şekline de bağlıdır
+                    </p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Mavi Işık ve Uyku</h2>
+                <p>
+                    Ekranlardan yayılan mavi ışığın, bazı araştırmalara göre beynin 'gündüz' modunda kalmasına neden olabileceği düşünülmektedir. Bu durum, melatonin üretimini etkileyerek sirkadiyen ritmi değiştirebilir. Akşam ekran kullanımı uyku kalitesini doğrudan etkiler.
+                </p>
+                <div class="highlight-box">
+                    <p>
+                        💤 Bazı araştırmalara göre yatmadan 2 saat önce ekran kullanımı, melatonin üretimini önemli ölçüde azaltabilir — bazı çalışmalarda bu etki <strong>%50'ye kadar</strong> ölçülmüştür.
+                    </p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Dijital Kullanım Spektrumu</h2>
+                <p>
+                    Ekran kullanımının farklı kategorileri ve etkileri:
+                </p>
+
+                <div class="habit-card">
+                    <span class="emoji">✅</span>
+                    <span class="type">POZİTİF</span>
+                    <h4>Yapıcı Kullanım</h4>
+                    <p><strong>Açıklama:</strong> Öğrenme, yaratıcı çalışma, anlamlı iletişim</p>
+                    <p><strong>Örnekler:</strong> Online kurs, Podcast dinleme, Uzun mesajlaşma</p>
+                    <p><strong>Etki:</strong> Pozitif</p>
+                </div>
+
+                <div class="habit-card">
+                    <span class="emoji">⚪</span>
+                    <span class="type">NÖTR</span>
+                    <h4>Nötr Kullanım</h4>
+                    <p><strong>Açıklama:</strong> Planlama, organize etme, bilgi erişimi</p>
+                    <p><strong>Örnekler:</strong> E-posta, Takvim, Harita kullanımı</p>
+                    <p><strong>Etki:</strong> Nötr</p>
+                </div>
+
+                <div class="habit-card">
+                    <span class="emoji">⚠️</span>
+                    <span class="type">NEGATİF</span>
+                    <h4>Tüketici Kullanım</h4>
+                    <p><strong>Açıklama:</strong> Pasif kaydırma, otomatik izleme, tepkisel kontrol</p>
+                    <p><strong>Örnekler:</strong> Sonsuz scroll, Otomatik video, Bildirim kontrolü</p>
+                    <p><strong>Etki:</strong> Negatif</p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Dikkat Restorasyonu Teorisi</h2>
+                <p>
+                    Dijital cihazlar <strong>yönlendirilmiş dikkat</strong> gerektirir ve bu yorucudur. Doğa ve çevrimdışı aktiviteler genellikle daha az zihinsel efor gerektirir ve bazı çalışmalarda bilişsel dinlenme sağladığı gözlemlenmiştir. İşte size iyi gelebilecek bazı alışkanlıklar ve etkileri:
+                </p>
+
+                <div class="boundary-card">
+                    <h4>🌳 Doğa Yürüyüşü</h4>
+                    <p><strong>Süre:</strong> 20 dakika</p>
+                    <p><strong>Restorasyon:</strong> Maksimum</p>
+                    <p><strong>Fayda:</strong> Prefrontal korteksi dinlendirir</p>
+                </div>
+
+                <div class="boundary-card">
+                    <h4>📖 Fiziksel Kitap</h4>
+                    <p><strong>Süre:</strong> 15 dakika</p>
+                    <p><strong>Restorasyon:</strong> Yüksek</p>
+                    <p><strong>Fayda:</strong> Derin odaklanma pratiği</p>
+                </div>
+
+                <div class="boundary-card">
+                    <h4>🧘‍♀️ Meditasyon</h4>
+                    <p><strong>Süre:</strong> 10 dakika</p>
+                    <p><strong>Restorasyon:</strong> Yüksek</p>
+                    <p><strong>Fayda:</strong> Zihinsel dinlenme</p>
+                </div>
+
+                <div class="boundary-card">
+                    <h4>🎨 El Sanatları</h4>
+                    <p><strong>Süre:</strong> 30 dakika</p>
+                    <p><strong>Restorasyon:</strong> Orta-Yüksek</p>
+                    <p><strong>Fayda:</strong> Yaratıcı akış</p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Sağlıklı Dijital Sınırlar Oluşturma</h2>
+                <p>
+                    Teknoloji kullanımınız üzerinde bilinçli kontrol kurmanın yolları:
+                </p>
+
+                <div class="boundary-card">
+                    <h4>🛏️ Yatak Odası = Telefonsuz Bölge</h4>
+                    <p>Telefonu yatak odası dışında bırakmak, bazı kişilerde daha iyi uyku kalitesiyle ilişkilendirilmiştir.</p>
+                    <p><strong>💡 Sebep:</strong> Uyku kalitenizi arttırır</p>
+                </div>
+
+                <div class="boundary-card">
+                    <h4>🍽️ Yemek Zamanı Offline</h4>
+                    <p>Yemeklerde telefondan uzak kalmak, sosyal bağ ve farkındalığı artırabilir.</p>
+                    <p><strong>💡 Sebep:</strong> Sindirimi iyileştirir, sosyal bağı güçlendirir</p>
+                </div>
+
+                <div class="boundary-card">
+                    <h4>🚶 Kulaklıksız Yürüyüş</h4>
+                    <p>Belirli zamanlarda sessiz yürüyüş yapın</p>
+                    <p><strong>💡 Sebep:</strong> Zihinsel netlik ve yaratıcılık artar</p>
+                </div>
+
+                <div class="boundary-card">
+                    <h4>🌙 Akşam Dijital Kapanış</h4>
+                    <p>Uyumadan önce belirli saatten sonra tüm ekranlardan uzaklaşın</p>
+                    <p><strong>💡 Sebep:</strong> Melatonin dengesi desteklenir</p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Bildirim Minimalizmi</h2>
+                <p>
+                    Her gelen bildirim, dikkatinizi anlık olarak böler ve zihninizi yeniden toplamak dakikalar sürebilir. Bildirimleri bir anda değil, aşama aşama azaltmak; odağınızı korumanın en sürdürülebilir yoludur.
+                </p>
+
+                <h3>🎯 Örnek bir yol haritası:</h3>
+
+                <div class="notification-tier">
+                    <h4>Aşama 1: Gereksiz bildirimleri kapatın</h4>
+                    <span class="count">30+ → 15 / gün</span>
+                    <p>Sosyal medya, Oyunlar, Haber uygulamaları</p>
+                </div>
+
+                <div class="notification-tier">
+                    <h4>Aşama 2: Önemli olmayan uygulamaları sessize alın</h4>
+                    <span class="count">15 → 8 / gün</span>
+                    <p>E-posta, Takvim, Hatırlatıcılar</p>
+                </div>
+
+                <div class="notification-tier">
+                    <h4>Aşama 3: Yalnızca acil durum bildirimlerini açık bırakın</h4>
+                    <span class="count">8 → 3 / gün</span>
+                    <p>Telefon, Mesajlar (önemli kişiler), Alarm</p>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Kaynaklar</h2>
+                <div class="stats-box">
+                    <h4>Araştırma Kaynakları:</h4>
+                    <ul>
+                        <li><strong>Cell Phone Usage Stats 2025</strong> by Trevor Wheelwright</li>
+                        <li><strong>Harvard Health</strong> - Blue Light and Sleep (2020)</li>
+                        <li><strong>Harvard Business School</strong> - iPhone Separation Study (2018)</li>
+                        <li><strong>Journal of Social and Clinical Psychology</strong> - Social Media and Mental Health (2019)</li>
+                        <li><strong>National Sleep Foundation</strong> - Screen Time Guidelines (2020)</li>
+                    </ul>
+                    <p style="margin-top: 1rem; font-size: 0.95rem; color: var(--color-text-tertiary);">
+                        ⚠️ Not: Kaynakların güncelliğini kontrol edin.
+                    </p>
+                </div>
+            </section>
+
+            <div class="highlight-box">
+                <p>
+                    <strong>Sonuç:</strong> Dijital hijyen, modern yaşamın en önemli becerilerinden biridir. Teknoloji kullanımınız üzerinde bilinçli kontrol kurarak, daha sağlıklı, daha odaklanmış ve daha mutlu bir yaşam sürebilirsiniz.
+                </p>
+            </div>
+        </div>
+    </article>
+
+    <footer id="iletisim" style="margin-top: 5rem;">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h4>Uzm. Psk. Olgu Menevşe</h4>
+                <p>Spor Psikoloğu</p>
+            </div>
+            <div class="footer-services">
+                <p>Bireysel ve Takım Danışmanlığı</p>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2025 Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Screen Impact Chart
+        const ctx = document.getElementById('screenImpactChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Uyku Kalitesi', 'Odaklanma', 'Sosyal İlişki', 'Üretkenlik', 'Ruh Hali'],
+                datasets: [{
+                    label: 'Negatif Etki (%)',
+                    data: [-35, -42, -28, -38, -31],
+                    backgroundColor: 'rgba(239, 68, 68, 0.8)',
+                    borderColor: 'rgba(239, 68, 68, 1)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: true,
+                scales: {
+                    x: {
+                        min: -50,
+                        max: 0,
+                        title: {
+                            display: true,
+                            text: 'Etki Yüzdesi',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Kategori',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
